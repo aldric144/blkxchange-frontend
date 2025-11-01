@@ -12,6 +12,8 @@ import VendorAgreement from './pages/VendorAgreement';
 import VendorDashboard from './pages/VendorDashboard';
 import News from './pages/News';
 import ArticleDetail from './pages/ArticleDetail';
+import EventDetailPage from './pages/EventDetailPage';
+import UserProfile from './pages/UserProfile';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import ShareYourVoiceButton from './components/ShareYourVoiceButton';
 
@@ -19,6 +21,7 @@ const Admin360Dashboard = lazy(() => import('./pages/admin360/Dashboard'));
 const Admin360Vendors = lazy(() => import('./pages/admin360/Vendors'));
 const Admin360Products = lazy(() => import('./pages/admin360/Products'));
 const Admin360CommunityHub = lazy(() => import('./pages/admin360/CommunityHub'));
+const Admin360Analytics = lazy(() => import('./pages/admin360/AnalyticsDashboard'));
 const DemoInvestor = lazy(() => import('./pages/demo/Investor'));
 
 function App() {
@@ -47,6 +50,8 @@ function App() {
           <Route path="/vendor-dashboard" element={<><Navigation /><VendorDashboard /></>} />
           <Route path="/news" element={<><Navigation /><News /></>} />
           <Route path="/news/:slug" element={<><Navigation /><ArticleDetail /></>} />
+          <Route path="/community/events/:id" element={<><Navigation /><EventDetailPage /></>} />
+          <Route path="/users/:username" element={<><Navigation /><UserProfile /></>} />
           
           <Route path="/admin360" element={
             <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
@@ -61,6 +66,11 @@ function App() {
           <Route path="/admin360/products" element={
             <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
               <Admin360Products />
+            </Suspense>
+          } />
+          <Route path="/admin360/analytics" element={
+            <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+              <Admin360Analytics />
             </Suspense>
           } />
           <Route path="/admin360/community-hub" element={
@@ -100,6 +110,8 @@ function App() {
           <Route path="/blkxchange360/*" element={null} />
           <Route path="/demo/*" element={null} />
           <Route path="/news/*" element={null} />
+          <Route path="/community/*" element={null} />
+          <Route path="/users/*" element={null} />
           <Route path="*" element={
             <footer className="bg-brand-black text-brand-ivory py-8 mt-12">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

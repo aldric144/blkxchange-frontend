@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Calendar, MapPin, Users, ExternalLink } from 'lucide-react';
 
 interface Event {
@@ -10,6 +11,7 @@ interface Event {
   location: string;
   image_url: string | null;
   created_at: string;
+  rsvp_count?: number;
 }
 
 interface EventFeedProps {
@@ -20,6 +22,7 @@ interface EventFeedProps {
 const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function EventFeed({ category, limit }: EventFeedProps) {
+  const navigate = useNavigate();
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -130,10 +133,22 @@ function EventFeed({ category, limit }: EventFeedProps) {
                   <MapPin className="w-4 h-4 text-brand-gold" />
                   <span>{event.location}</span>
                 </div>
+                {event.rsvp_count !== undefined && (
+                  <>
+                    <div className="hidden sm:block text-gray-400">•</div>
+                    <div className="flex items-center gap-1">
+                      <Users className="w-4 h-4 text-brand-gold" />
+                      <span>{event.rsvp_count} attending</span>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="mt-3 flex gap-2">
-                <button className="flex items-center gap-1 text-brand-gold hover:text-yellow-600 text-sm font-medium transition">
+                <button 
+                  onClick={() => navigate(`/community/events/${event.id}`)}
+                  className="flex items-center gap-1 text-brand-gold hover:text-yellow-600 text-sm font-medium transition"
+                >
                   <ExternalLink className="w-4 h-4" />
                   Learn More
                 </button>
