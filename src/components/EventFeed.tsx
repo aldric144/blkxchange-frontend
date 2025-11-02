@@ -34,8 +34,8 @@ function EventFeed({ category, limit }: EventFeedProps) {
     try {
       setLoading(true);
       const url = category 
-        ? `${API_URL}/api/events?category=${category}`
-        : `${API_URL}/api/events`;
+        ? `${API_URL}/api/events/with-rsvp?category=${category}`
+        : `${API_URL}/api/events/with-rsvp`;
       
       const response = await fetch(url);
       if (response.ok) {
