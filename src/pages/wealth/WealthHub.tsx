@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { BookOpen, Lock, CheckCircle, TrendingUp, Award, Target } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
 const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
@@ -29,13 +28,12 @@ interface WealthStats {
 }
 
 export default function WealthHub() {
-  const { user, token } = useAuth();
-  const navigate = useNavigate();
+  const { token } = useAuth();
   const [activeTab, setActiveTab] = useState<'courses' | 'progress' | 'rewards'>('courses');
   const [modules, setModules] = useState<WealthModule[]>([]);
   const [stats, setStats] = useState<WealthStats | null>(null);
   const [selectedModule, setSelectedModule] = useState<WealthModule | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [, setIsLoading] = useState(true);
   const [isCompleting, setIsCompleting] = useState(false);
   const [error, setError] = useState('');
 
