@@ -21,6 +21,8 @@ import Signup from './pages/auth/Signup';
 import SubscriptionManagement from './pages/subscription/SubscriptionManagement';
 import BlkPointsWallet from './pages/wallet/BlkPointsWallet';
 import InvestorImpact from './pages/investor/InvestorImpact';
+import WealthHub from './pages/wealth/WealthHub';
+import DAOGovernance from './pages/dao/DAOGovernance';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import ShareYourVoiceButton from './components/ShareYourVoiceButton';
 
@@ -79,6 +81,18 @@ function App() {
             <ProtectedRoute>
               <Navigation />
               <InvestorImpact />
+            </ProtectedRoute>
+          } />
+          <Route path="/wealth-hub" element={
+            <ProtectedRoute>
+              <Navigation />
+              <WealthHub />
+            </ProtectedRoute>
+          } />
+          <Route path="/dao" element={
+            <ProtectedRoute>
+              <Navigation />
+              <DAOGovernance />
             </ProtectedRoute>
           } />
           
