@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { UserPlus, Mail, Lock, User, AlertCircle, CheckCircle } from 'lucide-react';
 
 function Signup() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { signup } = useAuth();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -31,7 +32,8 @@ function Signup() {
 
     try {
       await signup(username, email, password);
-      navigate('/wallet');
+      const from = (location.state as any)?.from?.pathname || '/wallet';
+      navigate(from, { replace: true });
     } catch (err: any) {
       setError(err.message || 'Signup failed. Please try again.');
     } finally {
