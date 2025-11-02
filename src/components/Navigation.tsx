@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingBag, Users, Heart, Info, User, LogOut, Wallet, CreditCard, TrendingUp, ChevronDown } from 'lucide-react';
+import { ShoppingBag, Users, Heart, Info, User, LogOut, Wallet, CreditCard, TrendingUp, ChevronDown, BookOpen, Vote } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useState, useRef, useEffect } from 'react';
 
@@ -134,6 +134,24 @@ export default function Navigation() {
                     >
                       <TrendingUp className="w-4 h-4" />
                       <span>Investor Impact</span>
+                    </Link>
+                    
+                    <Link
+                      to="/wealth-hub"
+                      className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      <BookOpen className="w-4 h-4" />
+                      <span>Wealth Hub</span>
+                    </Link>
+                    
+                    <Link
+                      to="/dao"
+                      className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      <Vote className="w-4 h-4" />
+                      <span>DAO Governance</span>
                     </Link>
                     
                     <div className="border-t border-gray-200 mt-1">
