@@ -29,7 +29,7 @@ const REWARDS = [
 ];
 
 function BlkPointsWallet() {
-  const { user, token, isAuthenticated } = useAuth();
+  const { token, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [wallet, setWallet] = useState<WalletData | null>(null);
   const [transactions, setTransactions] = useState<Transaction[]>([]);

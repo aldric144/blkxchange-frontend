@@ -58,7 +58,7 @@ const SUBSCRIPTION_TIERS = [
 ];
 
 function SubscriptionManagement() {
-  const { user, token, isAuthenticated } = useAuth();
+  const { token, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [subscription, setSubscription] = useState<Subscription | null>(null);
   const [isLoading, setIsLoading] = useState(true);
