@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ShoppingBag, Users, Heart, TrendingUp } from 'lucide-react';
+import { ArrowRight, ShoppingBag, Users, Heart, TrendingUp, Gift } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { api } from '../api';
 import { ImpactStats } from '../types';
+import { useAuth } from '../contexts/AuthContext';
 
 const categories = [
   { name: 'Apparel', value: 'apparel', icon: '👔' },
@@ -19,6 +20,7 @@ const categories = [
 
 export default function Landing() {
   const [impactStats, setImpactStats] = useState<ImpactStats | null>(null);
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     api.getImpactStats().then(setImpactStats);
@@ -39,6 +41,27 @@ export default function Landing() {
               Empowering Black and BIPOC entrepreneurs, professionals, and creators to sell products, 
               offer services, and give back to their communities.
             </p>
+            
+            {!isAuthenticated && (
+              <div className="mb-8 max-w-2xl mx-auto">
+                <div className="bg-brand-gold text-brand-black rounded-lg p-6 shadow-xl">
+                  <div className="flex items-center justify-center gap-3 mb-3">
+                    <Gift className="w-6 h-6" />
+                    <h3 className="text-2xl font-bold">Get 100 BlkPoints Free!</h3>
+                  </div>
+                  <p className="text-lg mb-4">
+                    Sign up today and receive 100 BlkPoints to start earning rewards, accessing exclusive content, and supporting our community.
+                  </p>
+                  <Link to="/signup">
+                    <Button className="bg-brand-black text-brand-gold hover:bg-brand-charcoal text-lg px-8 py-3 w-full sm:w-auto">
+                      Create Free Account
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            )}
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/marketplace">
                 <Button className="bg-brand-gold text-brand-black hover:bg-opacity-90 text-lg px-8 py-6">

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { lazy, Suspense, useEffect } from 'react';
 import { AuthProvider } from './contexts/AuthContext';
 import Navigation from './components/Navigation';
+import ProtectedRoute from './components/ProtectedRoute';
 import Landing from './pages/Landing';
 import Marketplace from './pages/Marketplace';
 import Professionals from './pages/Professionals';
@@ -62,9 +63,24 @@ function App() {
           
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/subscription" element={<><Navigation /><SubscriptionManagement /></>} />
-          <Route path="/wallet" element={<><Navigation /><BlkPointsWallet /></>} />
-          <Route path="/investor-impact" element={<><Navigation /><InvestorImpact /></>} />
+          <Route path="/subscription" element={
+            <ProtectedRoute>
+              <Navigation />
+              <SubscriptionManagement />
+            </ProtectedRoute>
+          } />
+          <Route path="/wallet" element={
+            <ProtectedRoute>
+              <Navigation />
+              <BlkPointsWallet />
+            </ProtectedRoute>
+          } />
+          <Route path="/investor-impact" element={
+            <ProtectedRoute>
+              <Navigation />
+              <InvestorImpact />
+            </ProtectedRoute>
+          } />
           
           <Route path="/admin360" element={
             <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
