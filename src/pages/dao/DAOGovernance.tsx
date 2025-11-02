@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { Vote, Plus, TrendingUp, CheckCircle, XCircle, Clock, Users } from 'lucide-react';
+import { Vote, Plus, CheckCircle, XCircle, Clock } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
