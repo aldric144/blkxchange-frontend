@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
+import { AuthProvider } from './contexts/AuthContext';
 import Navigation from './components/Navigation';
 import Landing from './pages/Landing';
 import Marketplace from './pages/Marketplace';
@@ -14,6 +15,11 @@ import News from './pages/News';
 import ArticleDetail from './pages/ArticleDetail';
 import EventDetailPage from './pages/EventDetailPage';
 import UserProfile from './pages/UserProfile';
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
+import SubscriptionManagement from './pages/subscription/SubscriptionManagement';
+import BlkPointsWallet from './pages/wallet/BlkPointsWallet';
+import InvestorImpact from './pages/investor/InvestorImpact';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import ShareYourVoiceButton from './components/ShareYourVoiceButton';
 
@@ -35,10 +41,11 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-brand-ivory font-body">
-        <PWAInstallPrompt />
-        <ShareYourVoiceButton />
-        <Routes>
+      <AuthProvider>
+        <div className="min-h-screen bg-brand-ivory font-body">
+          <PWAInstallPrompt />
+          <ShareYourVoiceButton />
+          <Routes>
           <Route path="/" element={<><Navigation /><Landing /></>} />
           <Route path="/marketplace" element={<><Navigation /><Marketplace /></>} />
           <Route path="/professionals" element={<><Navigation /><Professionals /></>} />
@@ -52,6 +59,12 @@ function App() {
           <Route path="/news/:slug" element={<><Navigation /><ArticleDetail /></>} />
           <Route path="/community/events/:id" element={<><Navigation /><EventDetailPage /></>} />
           <Route path="/users/:username" element={<><Navigation /><UserProfile /></>} />
+          
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/subscription" element={<><Navigation /><SubscriptionManagement /></>} />
+          <Route path="/wallet" element={<><Navigation /><BlkPointsWallet /></>} />
+          <Route path="/investor-impact" element={<><Navigation /><InvestorImpact /></>} />
           
           <Route path="/admin360" element={
             <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
@@ -121,8 +134,9 @@ function App() {
               </div>
             </footer>
           } />
-        </Routes>
-      </div>
+          </Routes>
+        </div>
+      </AuthProvider>
     </Router>
   );
 }
