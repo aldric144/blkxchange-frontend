@@ -7,12 +7,17 @@ export default function Navigation() {
   const { isAuthenticated, user, logout } = useAuth();
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [is360DropdownOpen, setIs360DropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdown360Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsDropdownOpen(false);
+      }
+      if (dropdown360Ref.current && !dropdown360Ref.current.contains(event.target as Node)) {
+        setIs360DropdownOpen(false);
       }
     }
 
@@ -93,13 +98,67 @@ export default function Navigation() {
               <Info className="w-4 h-4" />
               <span>About</span>
             </Link>
-            <Link 
-              to="/blkxchange360" 
-              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
-            >
-              <Building2 className="w-4 h-4" />
-              <span>BlkXchange 360™</span>
-            </Link>
+            
+            <div className="relative" ref={dropdown360Ref}>
+              <button
+                onClick={() => setIs360DropdownOpen(!is360DropdownOpen)}
+                className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+              >
+                <Building2 className="w-4 h-4" />
+                <span>BlkXchange 360™</span>
+                <ChevronDown className={`w-3 h-3 transition-transform ${is360DropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {is360DropdownOpen && (
+                <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                  <Link
+                    to="/wealth-hub"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    onClick={() => setIs360DropdownOpen(false)}
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    <span>Wealth Hub</span>
+                  </Link>
+                  
+                  <Link
+                    to="/blkxchange360/community-hub"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    onClick={() => setIs360DropdownOpen(false)}
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    <span>Community Hub</span>
+                  </Link>
+                  
+                  <Link
+                    to="/blkxchange360/legacy-wall"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    onClick={() => setIs360DropdownOpen(false)}
+                  >
+                    <Heart className="w-4 h-4" />
+                    <span>Legacy Wall</span>
+                  </Link>
+                  
+                  <Link
+                    to="/blkxchange360/history-window"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    onClick={() => setIs360DropdownOpen(false)}
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    <span>History Window</span>
+                  </Link>
+                  
+                  <Link
+                    to="/blkxchange360/groups"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    onClick={() => setIs360DropdownOpen(false)}
+                  >
+                    <Users className="w-4 h-4" />
+                    <span>Groups</span>
+                  </Link>
+                </div>
+              )}
+            </div>
+            
             <Link 
               to="/vendor-apply" 
               className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
