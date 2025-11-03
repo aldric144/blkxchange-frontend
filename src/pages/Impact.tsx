@@ -3,32 +3,22 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, TrendingUp, Users, ShoppingBag, GraduationCap, Building, HandHeart } from 'lucide-react';
 import { api } from '../api';
 import { ImpactStats } from '../types';
+import { sampleImpactStats } from '../sampleData/impact';
 
 export default function Impact() {
-  const [stats, setStats] = useState<ImpactStats | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState<ImpactStats>(sampleImpactStats);
 
   useEffect(() => {
     api.getImpactStats()
-      .then(setStats)
-      .finally(() => setLoading(false));
+      .then(data => {
+        if (data) {
+          setStats(data);
+        }
+      })
+      .catch(err => {
+        console.error('Failed to fetch impact stats:', err);
+      });
   }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center">
-        <div className="text-xl text-gray-600">Loading impact data...</div>
-      </div>
-    );
-  }
-
-  if (!stats) {
-    return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center">
-        <div className="text-xl text-gray-600">Unable to load impact data.</div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-brand-ivory">

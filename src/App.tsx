@@ -121,6 +121,7 @@ function App() {
               <Admin360CommunityHub />
             </Suspense>
           } />
+          <Route path="/blkxchange360" element={<Navigate to="/blkxchange360/community-hub" replace />} />
           <Route path="/blkxchange360/community-hub" element={
             <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
               <Admin360CommunityHub />

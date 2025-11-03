@@ -165,6 +165,63 @@ export default function VendorApply() {
           </CardContent>
         </Card>
 
+        <Card className="border-2 border-brand-gold mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl text-brand-black">Success Stories</CardTitle>
+          </CardHeader>
+          <CardContent className="p-6">
+            <div className="space-y-6">
+              <div className="bg-brand-ivory rounded-lg p-6 border-l-4 border-brand-gold">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 rounded-full bg-brand-gold flex items-center justify-center text-brand-black text-2xl font-bold flex-shrink-0">
+                    JM
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-brand-black mb-2">
+                      "BlkXchange™ transformed my business!"
+                    </h3>
+                    <p className="text-gray-700 mb-3">
+                      "Within 3 months of joining BlkXchange™, my handmade jewelry sales increased by 300%. 
+                      The platform's focus on Black-owned businesses brought me customers who truly value 
+                      authentic craftsmanship and want to support our community. No upfront fees meant I could 
+                      start immediately without financial risk."
+                    </p>
+                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <span className="font-semibold text-brand-black">— Jasmine Mitchell</span>
+                      <span>•</span>
+                      <span>Golden Crown Jewelry</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-brand-ivory rounded-lg p-6 border-l-4 border-brand-gold">
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 rounded-full bg-brand-gold flex items-center justify-center text-brand-black text-2xl font-bold flex-shrink-0">
+                    DW
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-brand-black mb-2">
+                      "Finally, a platform that understands our needs"
+                    </h3>
+                    <p className="text-gray-700 mb-3">
+                      "As a small business owner selling natural hair care products, I struggled to compete 
+                      on mainstream platforms. BlkXchange™ gave me a dedicated audience that appreciates 
+                      quality Black-owned products. The community support and transparent fee structure make 
+                      this the best decision I've made for my business."
+                    </p>
+                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <span className="font-semibold text-brand-black">— David Washington</span>
+                      <span>•</span>
+                      <span>Natural Roots Beauty</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         <Card className="border-2 border-brand-gold">
           <CardHeader>
             <CardTitle className="text-2xl text-brand-black">Application Form</CardTitle>

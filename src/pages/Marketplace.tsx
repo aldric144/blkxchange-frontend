@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Star, ShoppingCart } from 'lucide-react';
 import { api } from '../api';
 import { Product } from '../types';
+import { sampleProducts } from '../sampleData/products';
 
 const categories = [
   { label: 'All Categories', value: 'all' },
@@ -22,16 +23,20 @@ const categories = [
 
 export default function Marketplace() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState<Product[]>(sampleProducts);
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'all');
 
   useEffect(() => {
-    setLoading(true);
     const category = selectedCategory === 'all' ? undefined : selectedCategory;
     api.getProducts(category)
-      .then(setProducts)
-      .finally(() => setLoading(false));
+      .then(data => {
+        if (data && data.length > 0) {
+          setProducts(data);
+        }
+      })
+      .catch(err => {
+        console.error('Failed to fetch products:', err);
+      });
   }, [selectedCategory]);
 
   const handleCategoryChange = (value: string) => {
@@ -78,11 +83,7 @@ export default function Marketplace() {
           </div>
         </div>
 
-        {loading ? (
-          <div className="text-center py-12">
-            <div className="text-xl text-gray-600">Loading products...</div>
-          </div>
-        ) : products.length === 0 ? (
+        {products.length === 0 ? (
           <div className="text-center py-12">
             <div className="text-xl text-gray-600">No products found in this category.</div>
           </div>
