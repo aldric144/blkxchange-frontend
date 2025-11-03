@@ -99,7 +99,7 @@ export default function HistoryWindow() {
           </h2>
           
           <div className="space-y-8">
-            {historicalEvents.map((event, index) => (
+            {historicalEvents.map((event) => (
               <Card key={event.id} className="overflow-hidden border-l-4 border-brand-gold hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-6">
