@@ -23,6 +23,8 @@ import BlkPointsWallet from './pages/wallet/BlkPointsWallet';
 import InvestorImpact from './pages/investor/InvestorImpact';
 import WealthHub from './pages/wealth/WealthHub';
 import DAOGovernance from './pages/dao/DAOGovernance';
+import LegacyWall from './pages/blkxchange360/LegacyWall';
+import HistoryWindow from './pages/blkxchange360/HistoryWindow';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import ShareYourVoiceButton from './components/ShareYourVoiceButton';
 
@@ -137,6 +139,8 @@ function App() {
               <Admin360CommunityHub />
             </Suspense>
           } />
+          <Route path="/blkxchange360/legacy-wall" element={<><Navigation /><LegacyWall /></>} />
+          <Route path="/blkxchange360/history-window" element={<><Navigation /><HistoryWindow /></>} />
           
           <Route path="/demo/investor" element={
             <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
