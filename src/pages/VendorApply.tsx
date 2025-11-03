@@ -95,7 +95,7 @@ export default function VendorApply() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center p-4">
+      <div className="min-h-screen bg-brand-cream flex items-center justify-center p-4">
         <Card className="max-w-2xl w-full border-2 border-brand-gold">
           <CardContent className="p-8 text-center">
             <CheckCircle className="w-16 h-16 text-brand-gold mx-auto mb-4" />
@@ -125,7 +125,7 @@ export default function VendorApply() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-ivory">
+    <div className="min-h-screen bg-brand-cream">
       <div className="bg-brand-black text-brand-ivory py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Store className="w-16 h-16 text-brand-gold mx-auto mb-4" />
@@ -171,7 +171,7 @@ export default function VendorApply() {
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-6">
-              <div className="bg-brand-ivory rounded-lg p-6 border-l-4 border-brand-gold">
+              <div className="bg-brand-cream rounded-lg p-6 border-l-4 border-brand-gold">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 rounded-full bg-brand-gold flex items-center justify-center text-brand-black text-2xl font-bold flex-shrink-0">
                     JM
@@ -195,7 +195,7 @@ export default function VendorApply() {
                 </div>
               </div>
 
-              <div className="bg-brand-ivory rounded-lg p-6 border-l-4 border-brand-gold">
+              <div className="bg-brand-cream rounded-lg p-6 border-l-4 border-brand-gold">
                 <div className="flex items-start gap-4">
                   <div className="w-16 h-16 rounded-full bg-brand-gold flex items-center justify-center text-brand-black text-2xl font-bold flex-shrink-0">
                     DW
@@ -429,7 +429,7 @@ export default function VendorApply() {
               <div className="space-y-4 pt-4 border-t">
                 <h3 className="text-lg font-semibold text-brand-black">Agreement</h3>
                 
-                <Alert className="bg-brand-ivory border-brand-gold">
+                <Alert className="bg-brand-cream border-brand-gold">
                   <AlertDescription className="text-gray-700">
                     Please review the{' '}
                     <a href="/vendor-agreement" target="_blank" className="text-brand-gold underline font-semibold">

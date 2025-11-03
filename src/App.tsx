@@ -45,7 +45,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="min-h-screen bg-brand-ivory font-body">
+        <div className="min-h-screen bg-brand-cream font-body">
           <PWAInstallPrompt />
           <ShareYourVoiceButton />
           <Routes>

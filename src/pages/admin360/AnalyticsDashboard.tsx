@@ -77,7 +77,7 @@ function AnalyticsDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center">
+      <div className="min-h-screen bg-brand-cream flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-gold"></div>
       </div>
     );
@@ -85,7 +85,7 @@ function AnalyticsDashboard() {
 
   if (error || !overview || !eventAnalytics) {
     return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center">
+      <div className="min-h-screen bg-brand-cream flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-brand-black mb-4">Failed to Load Analytics</h2>
           <p className="text-gray-600">{error || 'Unable to fetch analytics data'}</p>
@@ -132,7 +132,7 @@ function AnalyticsDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-ivory">
+    <div className="min-h-screen bg-brand-cream">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-brand-black mb-8">Analytics Dashboard</h1>
 
