@@ -100,16 +100,16 @@ export default function Navigation() {
               <Building2 className="w-4 h-4" />
               <span>BlkXchange 360™</span>
             </Link>
+            <Link 
+              to="/vendor-apply" 
+              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+            >
+              <Handshake className="w-4 h-4" />
+              <span>Become a Vendor</span>
+            </Link>
           </div>
 
           <div className="flex items-center space-x-4">
-            <Link 
-              to="/vendor-apply" 
-              className="px-4 py-2 bg-brand-gold text-brand-black font-semibold rounded hover:bg-opacity-90 transition-colors"
-            >
-              Become a Vendor
-            </Link>
-
             {!isAuthenticated ? (
               <>
                 <Link 

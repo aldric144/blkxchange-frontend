@@ -16,6 +16,45 @@ interface Article {
   created_at: string;
 }
 
+const sampleArticles: Article[] = [
+  {
+    id: 1,
+    title: "Black Wall Street: A Legacy of Economic Empowerment",
+    category: "History",
+    body: "The Greenwood District of Tulsa, Oklahoma, known as Black Wall Street, was one of the most prosperous African American communities in the early 20th century. Despite the tragic events of 1921, its legacy continues to inspire economic empowerment and entrepreneurship in Black communities today.",
+    author: "The Black Chronicle",
+    image_url: null,
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 2,
+    title: "Supporting Black-Owned Businesses: Why It Matters",
+    category: "Business",
+    body: "When you support Black-owned businesses, you're not just making a purchase—you're investing in community wealth, creating jobs, and building generational prosperity. Learn how your dollars can make a lasting impact.",
+    author: "The Black Chronicle",
+    image_url: null,
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 3,
+    title: "The Rise of Black Entrepreneurship in the Digital Age",
+    category: "Technology",
+    body: "From e-commerce to tech startups, Black entrepreneurs are leveraging digital platforms to build thriving businesses. Discover the innovators reshaping the economic landscape and creating opportunities for future generations.",
+    author: "The Black Chronicle",
+    image_url: null,
+    created_at: new Date().toISOString()
+  },
+  {
+    id: 4,
+    title: "Community Investment: Building Wealth Together",
+    category: "Finance",
+    body: "Economic empowerment starts with community investment. Learn how collective action, supporting local businesses, and reinvesting in our communities creates sustainable wealth and opportunities for all.",
+    author: "The Black Chronicle",
+    image_url: null,
+    created_at: new Date().toISOString()
+  }
+];
+
 const categories = [
   { name: 'Apparel & Accessories', value: 'apparel_accessories', icon: '👔' },
   { name: 'Art & Collectibles', value: 'art_collectibles', icon: '🎨' },
@@ -32,8 +71,7 @@ const categories = [
 export default function Landing() {
   const navigate = useNavigate();
   const [impactStats, setImpactStats] = useState<ImpactStats | null>(null);
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loadingArticles, setLoadingArticles] = useState(true);
+  const [articles, setArticles] = useState<Article[]>(sampleArticles);
 
   useEffect(() => {
     api.getImpactStats().then(setImpactStats);
@@ -42,16 +80,15 @@ export default function Landing() {
 
   const fetchArticles = async () => {
     try {
-      setLoadingArticles(true);
       const response = await fetch(`${API_BASE_URL}/api/articles`);
       if (response.ok) {
         const data = await response.json();
-        setArticles(data.slice(0, 4));
+        if (data && data.length > 0) {
+          setArticles(data.slice(0, 4));
+        }
       }
     } catch (err) {
       console.error('Failed to fetch articles:', err);
-    } finally {
-      setLoadingArticles(false);
     }
   };
 
@@ -157,13 +194,7 @@ export default function Landing() {
             </Link>
           </div>
 
-          {loadingArticles ? (
-            <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-gold mx-auto"></div>
-              <p className="mt-4 text-gray-600">Loading articles...</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {articles.map((article) => (
                 <div
                   key={article.id}
@@ -191,8 +222,7 @@ export default function Landing() {
                   </div>
                 </div>
               ))}
-            </div>
-          )}
+          </div>
         </div>
       </section>
 
