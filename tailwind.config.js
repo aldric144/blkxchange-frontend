@@ -12,10 +12,12 @@ export default {
   		colors: {
   			brand: {
   				black: '#000000',
-  				gold: '#C5A14E',
-  				emerald: '#047857',
+  				gold: '#D4AF37',
+  				green: '#00894C',
+  				cream: '#FFFDF6',
   				ivory: '#F8F8F6',
-  				charcoal: '#1A1A1A'
+  				charcoal: '#1A1A1A',
+  				emerald: '#047857'
   			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',
