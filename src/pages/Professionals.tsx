@@ -142,7 +142,7 @@ export default function Professionals() {
                   )}
                 </CardContent>
                 <CardFooter className="p-6 pt-0">
-                  <Button className="w-full bg-brand-gold text-brand-black hover:bg-opacity-90">
+                  <Button className="w-full bg-brand-green text-white hover:opacity-90">
                     <Calendar className="w-4 h-4 mr-2" />
                     Book Consultation
                   </Button>
