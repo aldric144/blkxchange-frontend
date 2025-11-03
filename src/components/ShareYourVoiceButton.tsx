@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState } from 'react';
 import { MessageSquare, X, Send } from 'lucide-react';
 
@@ -5,7 +6,6 @@ interface ShareYourVoiceButtonProps {
   className?: string;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function ShareYourVoiceButton({ className = '' }: ShareYourVoiceButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +27,7 @@ function ShareYourVoiceButton({ className = '' }: ShareYourVoiceButtonProps) {
 
     try {
       setSubmitting(true);
-      const response = await fetch(`${API_URL}/api/forums/topics`, {
+      const response = await fetch(`${API_BASE_URL}/api/forums/topics`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Calendar, MapPin, Users, ArrowLeft, Share2 } from 'lucide-react';
@@ -15,7 +16,6 @@ interface Event {
   rsvp_count: number;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function EventDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -28,7 +28,7 @@ function EventDetailPage() {
     const fetchEvent = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${API_URL}/api/events/${id}`);
+        const response = await fetch(`${API_BASE_URL}/api/events/${id}`);
         if (!response.ok) {
           throw new Error('Event not found');
         }

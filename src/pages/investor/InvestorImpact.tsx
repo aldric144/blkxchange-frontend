@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../config/api';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { TrendingUp, Building2, Rocket, Landmark, DollarSign, Users, Target, AlertCircle, Loader } from 'lucide-react';
@@ -24,7 +25,6 @@ interface InvestmentSummary {
   bank_count: number;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 const CATEGORY_INFO = {
   HBCU: {
@@ -67,7 +67,7 @@ function InvestorImpact() {
 
   const fetchInvestmentSummary = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/investments`);
+      const response = await fetch(`${API_BASE_URL}/api/investments`);
 
       if (!response.ok) throw new Error('Failed to fetch investments');
 
@@ -82,7 +82,7 @@ function InvestorImpact() {
 
   const fetchCategoryInvestments = async (category: string) => {
     try {
-      const response = await fetch(`${API_URL}/api/investments/by-category/${category}`);
+      const response = await fetch(`${API_BASE_URL}/api/investments/by-category/${category}`);
 
       if (!response.ok) throw new Error('Failed to fetch category investments');
 

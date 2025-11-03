@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, Calendar, User, ArrowRight } from 'lucide-react';
@@ -14,7 +15,6 @@ interface Article {
   created_at: string;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function News() {
   const navigate = useNavigate();
@@ -32,8 +32,8 @@ function News() {
     try {
       setLoading(true);
       const url = selectedCategory === 'all'
-        ? `${API_URL}/api/articles`
-        : `${API_URL}/api/articles?category=${selectedCategory}`;
+        ? `${API_BASE_URL}/api/articles`
+        : `${API_BASE_URL}/api/articles?category=${selectedCategory}`;
       
       const response = await fetch(url);
       if (response.ok) {

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MessageCircle, Calendar, User, ArrowLeft, Share2 } from 'lucide-react';
@@ -13,7 +14,6 @@ interface Article {
   created_at: string;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function ArticleDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -27,7 +27,7 @@ function ArticleDetail() {
       try {
         setLoading(true);
         const articleId = slug?.split('-').pop();
-        const response = await fetch(`${API_URL}/api/articles/${articleId}`);
+        const response = await fetch(`${API_BASE_URL}/api/articles/${articleId}`);
         
         if (!response.ok) {
           throw new Error('Article not found');

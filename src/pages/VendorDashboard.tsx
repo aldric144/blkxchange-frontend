@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -44,7 +45,7 @@ export default function VendorDashboard() {
   const fetchProducts = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/products-enhanced?vendor_id=${vendorId}`
+        `${API_BASE_URL}/api/products-enhanced?vendor_id=${vendorId}`
       );
       const data = await response.json();
       setProducts(data);
@@ -91,7 +92,7 @@ export default function VendorDashboard() {
     setSubmitLoading(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products-enhanced`, {
+      const response = await fetch(`${API_BASE_URL}/api/products-enhanced`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../config/api';
 import { useEffect, useState } from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Bar, Line, Doughnut } from 'react-chartjs-2';
@@ -38,7 +39,7 @@ interface EventAnalytics {
   average_rsvps_per_event: number;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
+const API_URL = API_BASE_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function AnalyticsDashboard() {
   const [overview, setOverview] = useState<AnalyticsOverview | null>(null);

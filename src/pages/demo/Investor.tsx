@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../config/api';
 import { useState, useEffect } from 'react';
 import { Download, FileText, BarChart3, TrendingUp, Users, Package, DollarSign, Heart } from 'lucide-react';
 
@@ -29,12 +30,11 @@ export default function DemoInvestor() {
 
   const fetchStats = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
       
       const [vendorsRes, productsRes, impactRes] = await Promise.all([
-        fetch(`${apiUrl}/api/vendors`),
-        fetch(`${apiUrl}/api/products`),
-        fetch(`${apiUrl}/api/impact`)
+        fetch(`${API_BASE_URL}/api/vendors`),
+        fetch(`${API_BASE_URL}/api/products`),
+        fetch(`${API_BASE_URL}/api/impact`)
       ]);
 
       const vendors = await vendorsRes.json();

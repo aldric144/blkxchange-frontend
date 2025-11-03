@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -35,7 +36,7 @@ export default function AdminProducts() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products-enhanced`);
+      const response = await fetch(`${API_BASE_URL}/api/products-enhanced`);
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -53,7 +54,7 @@ export default function AdminProducts() {
     setActionLoading(true);
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/admin/approve-product/${productId}`,
+        `${API_BASE_URL}/api/admin/approve-product/${productId}`,
         { method: 'POST', headers: { 'X-Admin-Secret': adminSecret } }
       );
 
@@ -79,7 +80,7 @@ export default function AdminProducts() {
     setActionLoading(true);
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/admin/reject-product/${productId}`,
+        `${API_BASE_URL}/api/admin/reject-product/${productId}`,
         { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'X-Admin-Secret': adminSecret },

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../config/api';
 import { useEffect, useState } from 'react';
 import { Users, CheckCircle, Clock } from 'lucide-react';
 import Admin360Layout from '@/components/admin/Admin360Layout';
@@ -25,8 +26,7 @@ export default function Admin360Vendors() {
 
   const fetchVendors = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-      const response = await fetch(`${apiUrl}/api/vendors`);
+      const response = await fetch(`${API_BASE_URL}/api/vendors`);
       if (response.ok) {
         const data = await response.json();
         setVendors(data);

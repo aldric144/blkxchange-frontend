@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState, useEffect } from 'react';
 import { Send, User, Clock } from 'lucide-react';
 
@@ -13,7 +14,6 @@ interface CommentSectionProps {
   articleId: number;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function CommentSection({ articleId }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
@@ -29,7 +29,7 @@ function CommentSection({ articleId }: CommentSectionProps) {
   const fetchComments = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_URL}/api/comments?article_id=${articleId}`);
+      const response = await fetch(`${API_BASE_URL}/api/comments?article_id=${articleId}`);
       if (response.ok) {
         const data = await response.json();
         setComments(data);
@@ -51,7 +51,7 @@ function CommentSection({ articleId }: CommentSectionProps) {
 
     try {
       setSubmitting(true);
-      const response = await fetch(`${API_URL}/api/comments`, {
+      const response = await fetch(`${API_BASE_URL}/api/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState, useEffect } from 'react';
 import { Calendar, MapPin } from 'lucide-react';
 import SidebarWidget from './SidebarWidget';
@@ -9,7 +10,6 @@ interface Event {
   location: string;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function UpcomingEventsWidget() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -21,7 +21,7 @@ function UpcomingEventsWidget() {
 
   const fetchUpcomingEvents = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/events`);
+      const response = await fetch(`${API_BASE_URL}/api/events`);
       if (response.ok) {
         const data = await response.json();
         const upcoming = data.filter((event: Event) => new Date(event.date) >= new Date());
