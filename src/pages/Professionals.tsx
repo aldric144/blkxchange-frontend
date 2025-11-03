@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Star, Calendar, CheckCircle } from 'lucide-react';
 import { api } from '../api';
 import { Professional } from '../types';
+import { sampleProfessionals } from '../sampleData/professionals';
 
 const categories = [
   { label: 'All Categories', value: 'all' },
@@ -18,16 +19,20 @@ const categories = [
 ];
 
 export default function Professionals() {
-  const [professionals, setProfessionals] = useState<Professional[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [professionals, setProfessionals] = useState<Professional[]>(sampleProfessionals);
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
-    setLoading(true);
     const category = selectedCategory === 'all' ? undefined : selectedCategory;
     api.getProfessionals(category)
-      .then(setProfessionals)
-      .finally(() => setLoading(false));
+      .then(data => {
+        if (data && data.length > 0) {
+          setProfessionals(data);
+        }
+      })
+      .catch(err => {
+        console.error('Failed to fetch professionals:', err);
+      });
   }, [selectedCategory]);
 
   return (
@@ -65,11 +70,7 @@ export default function Professionals() {
           </div>
         </div>
 
-        {loading ? (
-          <div className="text-center py-12">
-            <div className="text-xl text-gray-600">Loading professionals...</div>
-          </div>
-        ) : professionals.length === 0 ? (
+        {professionals.length === 0 ? (
           <div className="text-center py-12">
             <div className="text-xl text-gray-600">No professionals found in this category.</div>
           </div>

@@ -1,29 +1,8 @@
 import { API_BASE_URL } from '../../config/api';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { TrendingUp, Building2, Rocket, Landmark, DollarSign, Users, Target, AlertCircle, Loader } from 'lucide-react';
-
-interface Investment {
-  id: number;
-  category: string;
-  recipient_name: string;
-  amount: number;
-  description: string;
-  date: string;
-}
-
-interface InvestmentSummary {
-  total_invested: number;
-  category_breakdown: {
-    HBCU: number;
-    Startup: number;
-    Bank: number;
-  };
-  recent_investments: Investment[];
-  hbcu_count: number;
-  startup_count: number;
-  bank_count: number;
-}
+import { TrendingUp, Building2, Rocket, Landmark, DollarSign, Users, Target } from 'lucide-react';
+import { sampleInvestmentSummary, sampleCategoryInvestments, Investment, InvestmentSummary } from '../../sampleData/investments';
 
 
 const CATEGORY_INFO = {
@@ -49,11 +28,9 @@ const CATEGORY_INFO = {
 
 function InvestorImpact() {
   const { isAuthenticated } = useAuth();
-  const [summary, setSummary] = useState<InvestmentSummary | null>(null);
+  const [summary, setSummary] = useState<InvestmentSummary>(sampleInvestmentSummary);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [categoryInvestments, setCategoryInvestments] = useState<Investment[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     fetchInvestmentSummary();
@@ -69,14 +46,14 @@ function InvestorImpact() {
     try {
       const response = await fetch(`${API_BASE_URL}/api/investments`);
 
-      if (!response.ok) throw new Error('Failed to fetch investments');
-
-      const data = await response.json();
-      setSummary(data);
+      if (response.ok) {
+        const data = await response.json();
+        if (data) {
+          setSummary(data);
+        }
+      }
     } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setIsLoading(false);
+      console.error('Failed to fetch investments:', err);
     }
   };
 
@@ -84,25 +61,24 @@ function InvestorImpact() {
     try {
       const response = await fetch(`${API_BASE_URL}/api/investments/by-category/${category}`);
 
-      if (!response.ok) throw new Error('Failed to fetch category investments');
-
-      const data = await response.json();
-      setCategoryInvestments(data);
+      if (response.ok) {
+        const data = await response.json();
+        if (data && data.length > 0) {
+          setCategoryInvestments(data);
+        } else {
+          setCategoryInvestments(sampleCategoryInvestments[category] || []);
+        }
+      } else {
+        setCategoryInvestments(sampleCategoryInvestments[category] || []);
+      }
     } catch (err: any) {
       console.error('Failed to fetch category investments:', err);
+      setCategoryInvestments(sampleCategoryInvestments[category] || []);
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <Loader className="w-8 h-8 animate-spin text-brand-gold" />
-      </div>
-    );
-  }
-
-  const totalInvested = summary?.total_invested || 0;
-  const breakdown = summary?.category_breakdown || { HBCU: 0, Startup: 0, Bank: 0 };
+  const totalInvested = summary.total_invested || 0;
+  const breakdown = summary.category_breakdown || { HBCU: 0, Startup: 0, Bank: 0 };
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
@@ -120,13 +96,6 @@ function InvestorImpact() {
           </p>
         </div>
 
-        {error && (
-          <div className="max-w-4xl mx-auto mb-8 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-red-800">{error}</p>
-          </div>
-        )}
-
         <div className="bg-gradient-to-br from-brand-gold to-yellow-600 rounded-xl shadow-lg p-8 mb-12 text-white">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -139,7 +108,7 @@ function InvestorImpact() {
             ${totalInvested.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
           <div className="text-yellow-100">
-            Invested across {(summary?.hbcu_count || 0) + (summary?.startup_count || 0) + (summary?.bank_count || 0)} organizations
+            Invested across {(summary.hbcu_count || 0) + (summary.startup_count || 0) + (summary.bank_count || 0)} organizations
           </div>
         </div>
 
@@ -148,9 +117,9 @@ function InvestorImpact() {
             const Icon = info.icon;
             const amount = breakdown[key as keyof typeof breakdown] || 0;
             const percentage = totalInvested > 0 ? (amount / totalInvested) * 100 : 0;
-            const count = key === 'HBCU' ? summary?.hbcu_count : 
-                         key === 'Startup' ? summary?.startup_count : 
-                         summary?.bank_count;
+            const count = key === 'HBCU' ? summary.hbcu_count : 
+                         key === 'Startup' ? summary.startup_count : 
+                         summary.bank_count;
 
             return (
               <button
@@ -226,7 +195,7 @@ function InvestorImpact() {
             <Target className="w-6 h-6 text-brand-gold" />
             Recent Investments
           </h2>
-          {!summary || summary.recent_investments.length === 0 ? (
+          {summary.recent_investments.length === 0 ? (
             <p className="text-gray-600 text-center py-8">No investments yet. Be the first Investor subscriber!</p>
           ) : (
             <div className="space-y-4">
