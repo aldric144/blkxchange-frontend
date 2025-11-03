@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState } from 'react';
 import { Check, X } from 'lucide-react';
 
@@ -6,7 +7,6 @@ interface RSVPButtonProps {
   onSuccess?: () => void;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function RSVPButton({ eventId, onSuccess }: RSVPButtonProps) {
   const [showModal, setShowModal] = useState(false);
@@ -28,7 +28,7 @@ function RSVPButton({ eventId, onSuccess }: RSVPButtonProps) {
     setError(null);
 
     try {
-      const response = await fetch(`${API_URL}/api/events/${eventId}/rsvp`, {
+      const response = await fetch(`${API_BASE_URL}/api/events/${eventId}/rsvp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

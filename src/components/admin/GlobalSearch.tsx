@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../config/api';
 import { useState, useEffect, useRef } from 'react';
 import { Search, X } from 'lucide-react';
 
@@ -46,8 +47,7 @@ export default function GlobalSearch() {
     const searchTimeout = setTimeout(async () => {
       setLoading(true);
       try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-        const response = await fetch(`${apiUrl}/api/search?q=${encodeURIComponent(query)}`);
+        const response = await fetch(`${API_BASE_URL}/api/search?q=${encodeURIComponent(query)}`);
         if (response.ok) {
           const data = await response.json();
           setResults(data.results || []);

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -38,7 +39,7 @@ export default function AdminVendors() {
   const fetchApplications = async (secretParam?: string) => {
     const secret = secretParam ?? adminSecret;
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vendor-applications`, {
+      const response = await fetch(`${API_BASE_URL}/api/vendor-applications`, {
         headers: { 'X-Admin-Secret': secret }
       });
       if (!response.ok) {
@@ -62,7 +63,7 @@ export default function AdminVendors() {
     setActionLoading(true);
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/admin/approve-vendor/${applicationId}`,
+        `${API_BASE_URL}/api/admin/approve-vendor/${applicationId}`,
         { method: 'POST', headers: { 'X-Admin-Secret': adminSecret } }
       );
 
@@ -88,7 +89,7 @@ export default function AdminVendors() {
     setActionLoading(true);
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/admin/reject-vendor/${applicationId}`,
+        `${API_BASE_URL}/api/admin/reject-vendor/${applicationId}`,
         { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'X-Admin-Secret': adminSecret },

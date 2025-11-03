@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { User, Calendar, MessageCircle, Award, ArrowLeft } from 'lucide-react';
@@ -40,7 +41,6 @@ interface UserProfileData {
   };
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function UserProfile() {
   const { username } = useParams<{ username: string }>();
@@ -53,7 +53,7 @@ function UserProfile() {
     const fetchProfile = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${API_URL}/api/users/username/${username}`);
+        const response = await fetch(`${API_BASE_URL}/api/users/username/${username}`);
         if (!response.ok) {
           throw new Error('User not found');
         }

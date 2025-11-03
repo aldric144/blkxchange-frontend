@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../config/api';
 import { useState, useEffect } from 'react';
 import { Bell, X, Check, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -31,8 +32,7 @@ export default function NotificationCenter() {
 
   const fetchNotifications = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-      const response = await fetch(`${apiUrl}/api/notifications`);
+      const response = await fetch(`${API_BASE_URL}/api/notifications`);
       if (response.ok) {
         const data = await response.json();
         setNotifications(data.notifications || []);
@@ -44,8 +44,7 @@ export default function NotificationCenter() {
 
   const markAsRead = async (id: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-      await fetch(`${apiUrl}/api/notifications/${id}/read`, { method: 'POST' });
+      await fetch(`${API_BASE_URL}/api/notifications/${id}/read`, { method: 'POST' });
       setNotifications(prev =>
         prev.map(n => n.id === id ? { ...n, read: true } : n)
       );
@@ -56,8 +55,7 @@ export default function NotificationCenter() {
 
   const markAllAsRead = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-      await fetch(`${apiUrl}/api/notifications/read-all`, { method: 'POST' });
+      await fetch(`${API_BASE_URL}/api/notifications/read-all`, { method: 'POST' });
       setNotifications(prev => prev.map(n => ({ ...n, read: true })));
     } catch (error) {
       console.error('Failed to mark all as read:', error);
@@ -66,8 +64,7 @@ export default function NotificationCenter() {
 
   const deleteNotification = async (id: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-      await fetch(`${apiUrl}/api/notifications/${id}`, { method: 'DELETE' });
+      await fetch(`${API_BASE_URL}/api/notifications/${id}`, { method: 'DELETE' });
       setNotifications(prev => prev.filter(n => n.id !== id));
     } catch (error) {
       console.error('Failed to delete notification:', error);

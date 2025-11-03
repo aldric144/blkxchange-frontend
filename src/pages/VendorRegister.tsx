@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -23,7 +24,7 @@ export default function VendorRegister() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vendors`, {
+      const response = await fetch(`${API_BASE_URL}/api/vendors`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

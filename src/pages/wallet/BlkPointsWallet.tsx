@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../config/api';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +20,6 @@ interface Transaction {
   created_at: string;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 const REWARDS = [
   { id: 1, name: '$5 Discount', points: 500, description: 'Get $5 off your next purchase', value: 5 },
@@ -68,7 +68,7 @@ function BlkPointsWallet() {
 
   const fetchWalletData = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/wallet`, {
+      const response = await fetch(`${API_BASE_URL}/api/wallet`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -87,7 +87,7 @@ function BlkPointsWallet() {
 
   const fetchTransactions = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/wallet/transactions?limit=20`, {
+      const response = await fetch(`${API_BASE_URL}/api/wallet/transactions?limit=20`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -114,7 +114,7 @@ function BlkPointsWallet() {
     setError('');
 
     try {
-      const response = await fetch(`${API_URL}/api/wallet/redeem`, {
+      const response = await fetch(`${API_BASE_URL}/api/wallet/redeem`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -150,7 +150,7 @@ function BlkPointsWallet() {
     setError('');
 
     try {
-      const response = await fetch(`${API_URL}/api/donations/create-checkout`, {
+      const response = await fetch(`${API_BASE_URL}/api/donations/create-checkout`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -172,7 +172,7 @@ function BlkPointsWallet() {
       
       alert(`Donation checkout created!\n\nAmount: $${selectedDonation}\nBonus: ${data.points_bonus} BlkPoints\n\n(In production, you would be redirected to Stripe)`);
       
-      const completeResponse = await fetch(`${API_URL}/api/donations/complete/${data.donation_id}`, {
+      const completeResponse = await fetch(`${API_BASE_URL}/api/donations/complete/${data.donation_id}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

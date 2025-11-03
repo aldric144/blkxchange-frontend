@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../config/api';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +12,6 @@ interface Subscription {
   status: string;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 const SUBSCRIPTION_TIERS = [
   {
@@ -76,7 +76,7 @@ function SubscriptionManagement() {
 
   const fetchSubscription = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/subscription/status`, {
+      const response = await fetch(`${API_BASE_URL}/api/subscription/status`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -100,7 +100,7 @@ function SubscriptionManagement() {
     setError('');
 
     try {
-      const response = await fetch(`${API_URL}/api/subscription/upgrade`, {
+      const response = await fetch(`${API_BASE_URL}/api/subscription/upgrade`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

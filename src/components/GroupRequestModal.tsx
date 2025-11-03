@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState } from 'react';
 import { X, Users, Lock, Unlock } from 'lucide-react';
 
@@ -7,7 +8,6 @@ interface GroupRequestModalProps {
   onSuccess?: () => void;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function GroupRequestModal({ isOpen, onClose, onSuccess }: GroupRequestModalProps) {
   const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ function GroupRequestModal({ isOpen, onClose, onSuccess }: GroupRequestModalProp
 
     try {
       setSubmitting(true);
-      const response = await fetch(`${API_URL}/api/groups`, {
+      const response = await fetch(`${API_BASE_URL}/api/groups`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState, useEffect } from 'react';
 import { TrendingUp, MessageCircle } from 'lucide-react';
 import SidebarWidget from './SidebarWidget';
@@ -9,7 +10,6 @@ interface Topic {
   reply_count: number;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function TrendingTopicsWidget() {
   const [topics, setTopics] = useState<Topic[]>([]);
@@ -21,7 +21,7 @@ function TrendingTopicsWidget() {
 
   const fetchTrendingTopics = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/forums/topics`);
+      const response = await fetch(`${API_BASE_URL}/api/forums/topics`);
       if (response.ok) {
         const data = await response.json();
         setTopics(data.slice(0, 5));

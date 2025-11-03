@@ -1,8 +1,8 @@
+import { API_BASE_URL } from '../../config/api';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { BookOpen, Lock, CheckCircle, TrendingUp, Award, Target } from 'lucide-react';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 interface WealthModule {
   id: number;
@@ -44,7 +44,7 @@ export default function WealthHub() {
 
   const fetchModules = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/wealth/modules`, {
+      const response = await fetch(`${API_BASE_URL}/api/wealth/modules`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -62,7 +62,7 @@ export default function WealthHub() {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/wealth/stats`, {
+      const response = await fetch(`${API_BASE_URL}/api/wealth/stats`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -80,7 +80,7 @@ export default function WealthHub() {
     setIsCompleting(true);
     setError('');
     try {
-      const response = await fetch(`${API_URL}/api/wealth/complete`, {
+      const response = await fetch(`${API_BASE_URL}/api/wealth/complete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

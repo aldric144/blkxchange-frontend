@@ -1,8 +1,8 @@
+import { API_BASE_URL } from '../../config/api';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { Vote, Plus, CheckCircle, XCircle, Clock } from 'lucide-react';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 interface Proposal {
   id: number;
@@ -52,8 +52,8 @@ export default function DAOGovernance() {
     setIsLoading(true);
     try {
       const url = activeFilter === 'all' 
-        ? `${API_URL}/api/dao/proposals`
-        : `${API_URL}/api/dao/proposals?status_filter=${activeFilter}`;
+        ? `${API_BASE_URL}/api/dao/proposals`
+        : `${API_BASE_URL}/api/dao/proposals?status_filter=${activeFilter}`;
       
       const response = await fetch(url, {
         headers: {
@@ -74,7 +74,7 @@ export default function DAOGovernance() {
   const createProposal = async () => {
     setError('');
     try {
-      const response = await fetch(`${API_URL}/api/dao/propose`, {
+      const response = await fetch(`${API_BASE_URL}/api/dao/propose`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ export default function DAOGovernance() {
     if (!selectedProposal) return;
     setError('');
     try {
-      const response = await fetch(`${API_URL}/api/dao/vote`, {
+      const response = await fetch(`${API_BASE_URL}/api/dao/vote`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

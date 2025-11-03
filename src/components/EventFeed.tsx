@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config/api';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, MapPin, Users, ExternalLink } from 'lucide-react';
@@ -19,7 +20,6 @@ interface EventFeedProps {
   limit?: number;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://blkxchangedeploymentapp-pwvsejlq.devinapps.com';
 
 function EventFeed({ category, limit }: EventFeedProps) {
   const navigate = useNavigate();
@@ -34,8 +34,8 @@ function EventFeed({ category, limit }: EventFeedProps) {
     try {
       setLoading(true);
       const url = category 
-        ? `${API_URL}/api/events/with-rsvp?category=${category}`
-        : `${API_URL}/api/events/with-rsvp`;
+        ? `${API_BASE_URL}/api/events/with-rsvp?category=${category}`
+        : `${API_BASE_URL}/api/events/with-rsvp`;
       
       const response = await fetch(url);
       if (response.ok) {

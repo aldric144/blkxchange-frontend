@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../config/api';
 import { useEffect, useState } from 'react';
 import { Users, Package, DollarSign, TrendingUp, Heart, Calendar, Handshake, GraduationCap } from 'lucide-react';
 import Admin360Layout from '@/components/admin/Admin360Layout';
@@ -32,18 +33,17 @@ export default function Admin360Dashboard() {
 
   const fetchDashboardStats = async () => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
       
-      const vendorsRes = await fetch(`${apiUrl}/api/vendors`);
+      const vendorsRes = await fetch(`${API_BASE_URL}/api/vendors`);
       const vendors = await vendorsRes.json();
       
-      const productsRes = await fetch(`${apiUrl}/api/products`);
+      const productsRes = await fetch(`${API_BASE_URL}/api/products`);
       const products = await productsRes.json();
       
-      const ordersRes = await fetch(`${apiUrl}/api/orders`);
+      const ordersRes = await fetch(`${API_BASE_URL}/api/orders`);
       const orders = await ordersRes.json();
       
-      const impactRes = await fetch(`${apiUrl}/api/impact`);
+      const impactRes = await fetch(`${API_BASE_URL}/api/impact`);
       const impact = await impactRes.json();
       
       const totalRevenue = orders.reduce((sum: number, order: any) => sum + order.total_amount, 0);
