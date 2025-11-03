@@ -8,4 +8,4 @@
  * environment variables and hardcoding the production API URL.
  */
 
-export const API_BASE_URL = "https://blkxchangemarketplace-kytxrr7p.devinapps.com";
+export const API_BASE_URL = "https://blkxchange-backend-1.onrender.com";
