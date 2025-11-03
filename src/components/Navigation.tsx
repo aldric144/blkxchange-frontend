@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingBag, Users, Heart, Info, User, LogOut, Wallet, CreditCard, TrendingUp, ChevronDown, BookOpen, Vote } from 'lucide-react';
+import { ShoppingBag, Users, Heart, Info, User, LogOut, Wallet, CreditCard, TrendingUp, ChevronDown, BookOpen, Vote, MessageCircle, Handshake, Newspaper, Building2 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useState, useRef, useEffect } from 'react';
 
@@ -36,7 +36,7 @@ export default function Navigation() {
             </div>
           </Link>
           
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <Link 
               to="/marketplace" 
               className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
@@ -52,6 +52,34 @@ export default function Navigation() {
               <span>Professionals</span>
             </Link>
             <Link 
+              to="/investor-impact" 
+              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+            >
+              <TrendingUp className="w-4 h-4" />
+              <span>Invest</span>
+            </Link>
+            <Link 
+              to="/blkxchange360/community-hub" 
+              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>Community</span>
+            </Link>
+            <Link 
+              to="/vendor-apply" 
+              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+            >
+              <Handshake className="w-4 h-4" />
+              <span>Partner</span>
+            </Link>
+            <Link 
+              to="/news" 
+              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+            >
+              <Newspaper className="w-4 h-4" />
+              <span>News</span>
+            </Link>
+            <Link 
               to="/impact" 
               className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
             >
@@ -64,6 +92,13 @@ export default function Navigation() {
             >
               <Info className="w-4 h-4" />
               <span>About</span>
+            </Link>
+            <Link 
+              to="/blkxchange360" 
+              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+            >
+              <Building2 className="w-4 h-4" />
+              <span>BlkXchange 360™</span>
             </Link>
           </div>
 
