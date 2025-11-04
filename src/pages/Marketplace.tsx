@@ -90,7 +90,7 @@ export default function Marketplace() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {products.map((product) => (
-              <Card key={product.id} className="hover:shadow-lg transition-shadow border-2 hover:border-brand-gold">
+              <Card key={product.id} className="transition-all duration-300 border-2 hover:border-brand-gold hover:shadow-gold-glow-hover hover:-translate-y-1">
                 <CardContent className="p-0">
                   <div className="aspect-square bg-gray-200 relative overflow-hidden">
                     {product.image_url ? (

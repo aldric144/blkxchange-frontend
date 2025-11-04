@@ -81,7 +81,7 @@ export default function Professionals() {
             <div className="flex-1">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {professionals.map((professional) => (
-              <Card key={professional.id} className="hover:shadow-lg transition-shadow border-2 hover:border-brand-gold">
+              <Card key={professional.id} className="transition-all duration-300 border-2 hover:border-brand-gold hover:shadow-gold-glow-hover hover:-translate-y-1">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-20 h-20 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden">

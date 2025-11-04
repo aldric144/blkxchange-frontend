@@ -81,10 +81,11 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/investor-impact" element={
-            <ProtectedRoute>
+            <>
               <Navigation />
               <InvestorImpact />
-            </ProtectedRoute>
+              <Footer />
+            </>
           } />
           <Route path="/wealth-hub" element={
             <ProtectedRoute>
@@ -126,19 +127,31 @@ function App() {
           } />
           <Route path="/blkxchange360" element={<Navigate to="/blkxchange360/community-hub" replace />} />
           <Route path="/blkxchange360/community-hub" element={
-            <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
-              <Admin360CommunityHub />
-            </Suspense>
+            <>
+              <Navigation />
+              <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+                <Admin360CommunityHub />
+              </Suspense>
+              <Footer />
+            </>
           } />
           <Route path="/blkxchange360/events" element={
-            <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
-              <Admin360CommunityHub />
-            </Suspense>
+            <>
+              <Navigation />
+              <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+                <Admin360CommunityHub />
+              </Suspense>
+              <Footer />
+            </>
           } />
           <Route path="/blkxchange360/groups" element={
-            <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
-              <Admin360CommunityHub />
-            </Suspense>
+            <>
+              <Navigation />
+              <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+                <Admin360CommunityHub />
+              </Suspense>
+              <Footer />
+            </>
           } />
           <Route path="/blkxchange360/legacy-wall" element={<><Navigation /><LegacyWall /><Footer /></>} />
           <Route path="/blkxchange360/history-window" element={<><Navigation /><HistoryWindow /><Footer /></>} />
