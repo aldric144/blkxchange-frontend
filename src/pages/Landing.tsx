@@ -171,6 +171,13 @@ export default function Landing() {
               The Untold Story of Black Wall Street and Beyond
             </p>
           </div>
+          
+          {/* Legacy Caption */}
+          <div className="max-w-[900px] mx-auto mt-6 mb-8 px-4">
+            <p className="text-center text-brand-gold font-heading font-medium text-lg md:text-xl">
+              Honoring the resilience and entrepreneurial spirit of Black Wall Street, we continue the legacy of economic empowerment and community building.
+            </p>
+          </div>
         </div>
       </section>
 
