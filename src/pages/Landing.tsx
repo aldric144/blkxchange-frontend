@@ -129,19 +129,19 @@ export default function Landing() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/marketplace">
-                <Button className="bg-brand-gold text-brand-black hover:bg-opacity-90 text-lg px-8 py-6">
+                <Button className="bg-brand-gold text-brand-black hover:bg-opacity-90 gold-underline-hover text-lg px-8 py-6 font-bold">
                   <ShoppingBag className="w-5 h-5 mr-2" />
                   Shop Marketplace
                 </Button>
               </Link>
               <Link to="/vendor-apply">
-                <Button variant="outline" className="border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black text-lg px-8 py-6">
+                <Button className="bg-white text-brand-gold hover:bg-opacity-90 gold-underline-hover text-lg px-8 py-6 font-bold">
                   <TrendingUp className="w-5 h-5 mr-2" />
                   Sell on BlkXchange
                 </Button>
               </Link>
               <Link to="/professionals">
-                <Button variant="outline" className="border-brand-ivory text-brand-ivory hover:bg-brand-cream hover:text-brand-black text-lg px-8 py-6">
+                <Button className="bg-white text-brand-gold hover:bg-opacity-90 gold-underline-hover text-lg px-8 py-6 font-bold">
                   <Users className="w-5 h-5 mr-2" />
                   Explore Professionals
                 </Button>
@@ -152,9 +152,9 @@ export default function Landing() {
       </section>
 
       {/* Legacy of Black Wall Street - YouTube Video Section */}
-      <section className="py-16 bg-brand-charcoal text-brand-ivory">
+      <section className="py-16 bg-brand-black text-brand-ivory">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-heading font-bold text-center mb-4 text-brand-gold section-divider-gold">
+          <h2 className="text-4xl font-heading font-bold text-center mb-8 text-brand-gold">
             Legacy of Black Wall Street
           </h2>
           <div className="max-w-4xl mx-auto">

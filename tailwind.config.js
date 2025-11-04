@@ -13,16 +13,16 @@ export default {
   		},
   		colors: {
   			brand: {
-  				primary: brandLock.colors['--color-bg-primary'], // White #FFFFFF
+  				primary: brandLock.colors['--color-bg-primary'], // Deep Blue #001F3F
   				gold: brandLock.colors['--color-accent-gold'], // Metallic Gold #D4AF37
   				black: brandLock.colors['--color-bg-dark'], // Pure Black #000000
-  				hero: brandLock.colors['--color-bg-hero'], // Hero Black #000000
+  				surface: brandLock.colors['--color-surface'], // Dark Surface #0B0B0B
   				charcoal: brandLock.colors['--color-bg-charcoal'], // Charcoal #1A1A1A
   				light: brandLock.colors['--color-text-light'], // White #FFFFFF
   				dark: brandLock.colors['--color-text-dark'], // Black #000000
   				gray: brandLock.colors['--color-text-gray'], // Gray #6B7280
   				
-  				cream: brandLock.colors['--color-bg-primary'], // Map cream → white
+  				cream: brandLock.colors['--color-bg-primary'], // Map cream → deep blue
   				ivory: brandLock.colors['--color-text-light'], // Map ivory → white
   				green: brandLock.colors['--color-accent-emerald'], // Map green → emerald
   				emerald: brandLock.colors['--color-accent-emerald'] // Emerald #00894C
@@ -89,19 +89,21 @@ export default {
   		addBase({
   			':root': {
   				'--color-bg-primary': brandLock.colors['--color-bg-primary'],
-  				'--color-bg-hero': brandLock.colors['--color-bg-hero'],
   				'--color-bg-dark': brandLock.colors['--color-bg-dark'],
+  				'--color-surface': brandLock.colors['--color-surface'],
   				'--color-bg-charcoal': brandLock.colors['--color-bg-charcoal'],
   				'--color-accent-gold': brandLock.colors['--color-accent-gold'],
   				'--color-accent-emerald': brandLock.colors['--color-accent-emerald'],
-  				'--color-emerald-dark': brandLock.colors['--color-emerald-dark'],
   				'--color-text-light': brandLock.colors['--color-text-light'],
   				'--color-text-dark': brandLock.colors['--color-text-dark'],
+  				'--color-text-gold': brandLock.colors['--color-text-gold'],
   				'--color-text-gray': brandLock.colors['--color-text-gray'],
   				'--color-border-gold': brandLock.colors['--color-border-gold'],
   				'--color-border-light': brandLock.colors['--color-border-light'],
+  				'--color-shadow-gold': brandLock.colors['--color-shadow-gold'],
   				'--color-hover-gold': brandLock.colors['--color-hover-gold'],
-  				'--color-hover-emerald': brandLock.colors['--color-hover-emerald']
+  				'--color-hover-emerald': brandLock.colors['--color-hover-emerald'],
+  				'--color-emerald-dark': brandLock.colors['--color-emerald-dark']
   			}
   		});
   	},
