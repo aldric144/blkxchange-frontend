@@ -32,7 +32,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="bg-brand-black text-brand-ivory border-b border-brand-gold">
+    <nav className="bg-brand-black text-brand-light border-b border-brand-gold">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
@@ -41,7 +41,7 @@ export default function Navigation() {
             </div>
           </Link>
           
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-6">
             <Link 
               to="/marketplace" 
               className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
@@ -168,18 +168,18 @@ export default function Navigation() {
             </Link>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 lg:hidden">
             {!isAuthenticated ? (
               <>
                 <Link 
                   to="/login" 
-                  className="px-4 py-2 text-brand-ivory hover:text-brand-gold transition-colors font-semibold"
+                  className="px-4 py-2 text-brand-light hover:text-brand-gold transition-colors font-semibold"
                 >
                   Login
                 </Link>
                 <Link 
                   to="/signup" 
-                  className="px-4 py-2 bg-brand-ivory text-brand-black font-semibold rounded hover:bg-opacity-90 transition-colors"
+                  className="px-4 py-2 bg-gold-metallic text-brand-black font-semibold rounded hover:shadow-gold-glow-hover transition-all"
                 >
                   Sign Up
                 </Link>
@@ -188,7 +188,7 @@ export default function Navigation() {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center space-x-2 px-4 py-2 bg-brand-ivory text-brand-black font-semibold rounded hover:bg-opacity-90 transition-colors"
+                  className="flex items-center space-x-2 px-4 py-2 bg-gold-metallic text-brand-black font-semibold rounded hover:shadow-gold-glow-hover transition-all"
                 >
                   <User className="w-4 h-4" />
                   <span>My Account</span>
@@ -196,16 +196,16 @@ export default function Navigation() {
                 </button>
 
                 {isDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
-                    <div className="px-4 py-2 border-b border-gray-200">
-                      <p className="text-sm font-semibold text-brand-black">{user?.username}</p>
-                      <p className="text-xs text-gray-500">{user?.email}</p>
+                  <div className="absolute right-0 mt-2 w-56 bg-brand-surface rounded-md shadow-gold-glow py-1 z-50 border border-brand-gold">
+                    <div className="px-4 py-2 border-b border-brand-gold">
+                      <p className="text-sm font-semibold text-brand-light">{user?.username}</p>
+                      <p className="text-xs text-gray-400">{user?.email}</p>
                       <p className="text-xs text-brand-gold font-semibold mt-1">{user?.membership_tier} Member</p>
                     </div>
                     
                     <Link
                       to="/wallet"
-                      className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
                       onClick={() => setIsDropdownOpen(false)}
                     >
                       <Wallet className="w-4 h-4" />
@@ -214,7 +214,7 @@ export default function Navigation() {
                     
                     <Link
                       to="/subscription"
-                      className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
                       onClick={() => setIsDropdownOpen(false)}
                     >
                       <CreditCard className="w-4 h-4" />
@@ -223,7 +223,7 @@ export default function Navigation() {
                     
                     <Link
                       to="/investor-impact"
-                      className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
                       onClick={() => setIsDropdownOpen(false)}
                     >
                       <TrendingUp className="w-4 h-4" />
@@ -232,7 +232,7 @@ export default function Navigation() {
                     
                     <Link
                       to="/wealth-hub"
-                      className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
                       onClick={() => setIsDropdownOpen(false)}
                     >
                       <BookOpen className="w-4 h-4" />
@@ -241,17 +241,17 @@ export default function Navigation() {
                     
                     <Link
                       to="/dao"
-                      className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
                       onClick={() => setIsDropdownOpen(false)}
                     >
                       <Vote className="w-4 h-4" />
                       <span>DAO Governance</span>
                     </Link>
                     
-                    <div className="border-t border-gray-200 mt-1">
+                    <div className="border-t border-brand-gold mt-1">
                       <button
                         onClick={handleLogout}
-                        className="flex items-center space-x-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition-colors w-full text-left"
+                        className="flex items-center space-x-2 px-4 py-2 text-sm text-red-400 hover:bg-brand-black hover:text-red-300 transition-colors w-full text-left"
                       >
                         <LogOut className="w-4 h-4" />
                         <span>Logout</span>
