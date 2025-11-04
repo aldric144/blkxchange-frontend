@@ -175,14 +175,14 @@ export default function Landing() {
       </section>
 
       {/* From The Black Chronicle - News Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-emerald-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-4xl font-heading font-bold text-brand-black mb-2 section-divider-gold">
+              <h2 className="text-4xl font-heading font-bold text-brand-gold mb-2">
                 From The Black Chronicle
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-brand-light">
                 Latest in Black Excellence, Innovation, and Achievement
               </p>
             </div>
@@ -199,7 +199,7 @@ export default function Landing() {
                 <div
                   key={article.id}
                   onClick={() => handleArticleClick(article)}
-                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer border border-gray-200"
+                  className="bg-brand-charcoal rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer border border-brand-gold"
                 >
                   {article.image_url && (
                     <img
@@ -209,13 +209,13 @@ export default function Landing() {
                     />
                   )}
                   <div className="p-4">
-                    <h3 className="text-lg font-bold text-brand-black mb-2 line-clamp-2">
+                    <h3 className="text-lg font-bold text-brand-light mb-2 line-clamp-2">
                       {article.title}
                     </h3>
-                    <p className="text-gray-700 text-sm mb-3 line-clamp-3">
+                    <p className="text-gray-300 text-sm mb-3 line-clamp-3">
                       {truncateText(article.body, 100)}
                     </p>
-                    <div className="flex items-center text-gray-600 text-xs">
+                    <div className="flex items-center text-brand-gold text-xs">
                       <UserIcon className="w-3 h-3 mr-1" />
                       <span>{article.author}</span>
                     </div>
@@ -227,15 +227,15 @@ export default function Landing() {
       </section>
 
       {/* Shop by Category Section */}
-      <section className="py-16 bg-brand-cream">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-heading font-bold text-center mb-12 text-brand-black section-divider-gold">
+          <h2 className="text-4xl font-heading font-bold text-center mb-12 text-brand-black">
             Shop by Category
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {categories.map((category) => (
               <Link key={category.value} to={`/marketplace?category=${category.value}`}>
-                <button className="w-full bg-brand-gold text-brand-black font-semibold py-4 px-4 rounded-lg hover:bg-opacity-90 transition-all hover:shadow-lg">
+                <button className="w-full bg-white text-brand-black font-semibold py-4 px-4 rounded-lg border-2 border-gray-300 hover:border-brand-gold transition-all hover:shadow-lg">
                   {category.name}
                 </button>
               </Link>
@@ -243,7 +243,7 @@ export default function Landing() {
           </div>
           <div className="text-center mt-8">
             <Link to="/marketplace">
-              <Button className="bg-brand-black text-brand-gold hover:bg-brand-charcoal text-lg px-8 py-4">
+              <Button className="bg-white text-brand-gold border-2 border-brand-gold hover:bg-brand-gold hover:text-brand-black text-lg px-8 py-4">
                 View All Products
               </Button>
             </Link>
@@ -362,7 +362,7 @@ export default function Landing() {
       </section>
 
       {/* Footer Note */}
-      <section className="py-8 bg-brand-cream border-t border-gray-300">
+      <section className="py-8 bg-white border-t border-gray-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gray-600 text-sm">
             BlkXchange™ operates on a 15% community-centered revenue model: 85% goes directly to our vendors, 
