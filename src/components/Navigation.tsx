@@ -44,76 +44,67 @@ export default function Navigation() {
           <div className="hidden lg:flex items-center space-x-6">
             <Link 
               to="/marketplace" 
-              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
             >
-              <ShoppingBag className="w-4 h-4" />
-              <span>Marketplace</span>
+              Marketplace
             </Link>
             <Link 
               to="/professionals" 
-              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
             >
-              <Users className="w-4 h-4" />
-              <span>Professionals</span>
+              Professionals
             </Link>
             <Link 
               to="/investor-impact" 
-              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
             >
-              <TrendingUp className="w-4 h-4" />
-              <span>Invest</span>
+              Invest
             </Link>
             <Link 
               to="/blkxchange360/community-hub" 
-              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
             >
-              <MessageCircle className="w-4 h-4" />
-              <span>Community</span>
+              Community
             </Link>
             <Link 
               to="/vendor-apply" 
-              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
             >
-              <Handshake className="w-4 h-4" />
-              <span>Partner</span>
+              Partner
             </Link>
             <Link 
               to="/news" 
-              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
             >
-              <Newspaper className="w-4 h-4" />
-              <span>News</span>
+              News
             </Link>
             <Link 
               to="/impact" 
-              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
             >
-              <Heart className="w-4 h-4" />
-              <span>Impact</span>
+              Impact
             </Link>
             <Link 
               to="/about" 
-              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
             >
-              <Info className="w-4 h-4" />
-              <span>About</span>
+              About
             </Link>
             
             <div className="relative" ref={dropdown360Ref}>
               <button
                 onClick={() => setIs360DropdownOpen(!is360DropdownOpen)}
-                className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+                className="gold-underline-hover hover:text-brand-gold transition-colors font-medium flex items-center space-x-1"
               >
-                <Building2 className="w-4 h-4" />
                 <span>BlkXchange 360™</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${is360DropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {is360DropdownOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                <div className="absolute left-0 mt-2 w-48 bg-brand-surface rounded-md shadow-gold-glow py-1 z-50 border border-brand-gold">
                   <Link
                     to="/wealth-hub"
-                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
                     onClick={() => setIs360DropdownOpen(false)}
                   >
                     <BookOpen className="w-4 h-4" />
@@ -122,7 +113,7 @@ export default function Navigation() {
                   
                   <Link
                     to="/blkxchange360/community-hub"
-                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
                     onClick={() => setIs360DropdownOpen(false)}
                   >
                     <MessageCircle className="w-4 h-4" />
@@ -131,7 +122,7 @@ export default function Navigation() {
                   
                   <Link
                     to="/blkxchange360/legacy-wall"
-                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
                     onClick={() => setIs360DropdownOpen(false)}
                   >
                     <Heart className="w-4 h-4" />
@@ -140,7 +131,7 @@ export default function Navigation() {
                   
                   <Link
                     to="/blkxchange360/history-window"
-                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
                     onClick={() => setIs360DropdownOpen(false)}
                   >
                     <BookOpen className="w-4 h-4" />
@@ -149,7 +140,7 @@ export default function Navigation() {
                   
                   <Link
                     to="/blkxchange360/groups"
-                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
                     onClick={() => setIs360DropdownOpen(false)}
                   >
                     <Users className="w-4 h-4" />
@@ -161,10 +152,23 @@ export default function Navigation() {
             
             <Link 
               to="/vendor-apply" 
-              className="flex items-center space-x-1 hover:text-brand-gold transition-colors"
+              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
             >
-              <Handshake className="w-4 h-4" />
-              <span>Become a Vendor</span>
+              Become a Vendor
+            </Link>
+            
+            <Link 
+              to="/login" 
+              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
+            >
+              Login
+            </Link>
+            
+            <Link 
+              to="/signup" 
+              className="px-4 py-2 bg-gold-metallic text-brand-black font-semibold rounded hover:shadow-gold-glow-hover transition-all"
+            >
+              Sign Up
             </Link>
           </div>
 
