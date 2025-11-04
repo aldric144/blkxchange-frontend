@@ -23,7 +23,7 @@ const sampleArticles: Article[] = [
     category: "History",
     body: "The Greenwood District of Tulsa, Oklahoma, known as Black Wall Street, was one of the most prosperous African American communities in the early 20th century. Despite the tragic events of 1921, its legacy continues to inspire economic empowerment and entrepreneurship in Black communities today.",
     author: "The Black Chronicle",
-    image_url: null,
+    image_url: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=450&fit=crop",
     created_at: new Date().toISOString()
   },
   {
@@ -32,7 +32,7 @@ const sampleArticles: Article[] = [
     category: "Business",
     body: "When you support Black-owned businesses, you're not just making a purchase—you're investing in community wealth, creating jobs, and building generational prosperity. Learn how your dollars can make a lasting impact.",
     author: "The Black Chronicle",
-    image_url: null,
+    image_url: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800&h=450&fit=crop",
     created_at: new Date().toISOString()
   },
   {
@@ -41,7 +41,7 @@ const sampleArticles: Article[] = [
     category: "Technology",
     body: "From e-commerce to tech startups, Black entrepreneurs are leveraging digital platforms to build thriving businesses. Discover the innovators reshaping the economic landscape and creating opportunities for future generations.",
     author: "The Black Chronicle",
-    image_url: null,
+    image_url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=450&fit=crop",
     created_at: new Date().toISOString()
   },
   {
@@ -50,7 +50,7 @@ const sampleArticles: Article[] = [
     category: "Finance",
     body: "Economic empowerment starts with community investment. Learn how collective action, supporting local businesses, and reinvesting in our communities creates sustainable wealth and opportunities for all.",
     author: "The Black Chronicle",
-    image_url: null,
+    image_url: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=450&fit=crop",
     created_at: new Date().toISOString()
   }
 ];
@@ -209,23 +209,24 @@ export default function Landing() {
                 <div
                   key={article.id}
                   onClick={() => handleArticleClick(article)}
-                  className="bg-black rounded-lg overflow-hidden hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all cursor-pointer border border-brand-gold p-3"
+                  className="flex flex-col h-full bg-black rounded-lg overflow-hidden hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all cursor-pointer border border-brand-gold"
                 >
-                  {article.image_url && (
-                    <img
-                      src={article.image_url}
-                      alt={article.title}
-                      className="w-full aspect-video object-cover rounded-md mb-3"
-                    />
-                  )}
-                  <div>
+                  <img
+                    src={article.image_url || "https://images.unsplash.com/photo-1585241645927-c7a8e5840c42?w=800&h=450&fit=crop"}
+                    alt={article.title}
+                    className="w-full aspect-video object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1585241645927-c7a8e5840c42?w=800&h=450&fit=crop";
+                    }}
+                  />
+                  <div className="p-3 flex flex-col flex-grow">
                     <h3 className="text-base font-bold text-white mb-2 line-clamp-2">
                       {article.title}
                     </h3>
-                    <p className="text-gray-400 text-sm mb-3 line-clamp-3">
+                    <p className="text-[#CCCCCC] text-sm mb-3 line-clamp-3 flex-grow">
                       {truncateText(article.body, 100)}
                     </p>
-                    <div className="flex items-center text-brand-gold text-xs">
+                    <div className="flex items-center text-brand-gold text-xs mt-auto">
                       <UserIcon className="w-3 h-3 mr-1" />
                       <span>{article.author}</span>
                     </div>
