@@ -7,6 +7,7 @@ import { Star, Calendar, CheckCircle } from 'lucide-react';
 import { api } from '../api';
 import { Professional } from '../types';
 import { sampleProfessionals } from '../sampleData/professionals';
+import { getCategoryColor, getCategoryTextColor } from '../utils/categoryColors';
 
 const categories = [
   { label: 'All Categories', value: 'all' },
@@ -108,7 +109,13 @@ export default function Professionals() {
                     </div>
                   </div>
 
-                  <Badge className="mb-3 capitalize bg-brand-charcoal text-brand-gold">
+                  <Badge 
+                    className="mb-3 capitalize"
+                    style={{ 
+                      backgroundColor: getCategoryColor(professional.category),
+                      color: getCategoryTextColor(getCategoryColor(professional.category))
+                    }}
+                  >
                     {professional.category}
                   </Badge>
 
