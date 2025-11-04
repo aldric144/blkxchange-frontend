@@ -1,39 +1,43 @@
 {
   "brandName": "BlkXchange™",
-  "version": "19.6.2",
+  "version": "19.6.3-A",
   "locked": true,
-  "description": "Deep Luxury Color Scheme - DO NOT MODIFY without explicit approval",
+  "description": "Color scheme based on production screenshots - black headers, white content, emerald green accents",
   "colors": {
-    "--color-bg-primary": "#001F3F",
-    "--color-accent-gold": "#D4AF37",
+    "--color-bg-primary": "#FFFFFF",
+    "--color-bg-hero": "#000000",
     "--color-bg-dark": "#000000",
+    "--color-bg-charcoal": "#1A1A1A",
+    "--color-accent-gold": "#D4AF37",
+    "--color-accent-emerald": "#00894C",
+    "--color-emerald-dark": "#002A1A",
     "--color-text-light": "#FFFFFF",
-    "--color-surface": "#0B0B0B",
-    "--color-text-dark": "#1A1A1A",
+    "--color-text-dark": "#000000",
+    "--color-text-gray": "#6B7280",
     "--color-border-gold": "#D4AF37",
-    "--color-hover-gold": "#E5C158"
+    "--color-border-light": "#E5E5E5",
+    "--color-hover-gold": "#E5C158",
+    "--color-hover-emerald": "#00A855"
   },
   "gradients": {
-    "gold-metallic": "linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 20%)"
-  },
-  "typography": {
-    "fontFamily": {
-      "heading": "Inter, sans-serif",
-      "body": "Inter, sans-serif"
-    }
-  },
-  "spacing": {
-    "navHeight": "4rem",
-    "sectionPadding": "3rem"
+    "gold-metallic": "linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 20%)",
+    "emerald-gradient": "linear-gradient(135deg, #002A1A 0%, #000000 100%)",
+    "hero-gradient": "linear-gradient(135deg, #000000 0%, #111111 100%)"
   },
   "effects": {
     "goldGlow": "0 0 20px rgba(212, 175, 55, 0.25)",
     "goldGlowHover": "0 0 30px rgba(212, 175, 55, 0.4)",
+    "emeraldGlow": "0 0 20px rgba(0, 137, 76, 0.25)",
+    "emeraldGlowHover": "0 0 30px rgba(0, 137, 76, 0.4)",
     "cardShadow": "0 4px 6px rgba(0, 0, 0, 0.1)",
     "cardShadowHover": "0 10px 25px rgba(0, 0, 0, 0.2)"
   },
-  "borders": {
-    "gold": "1px solid var(--color-border-gold)",
-    "goldThick": "2px solid var(--color-border-gold)"
+  "spacing": {
+    "sectionPadding": "4rem",
+    "containerMaxWidth": "1280px"
+  },
+  "typography": {
+    "fontHeading": "Playfair Display, serif",
+    "fontBody": "Inter, sans-serif"
   }
 }

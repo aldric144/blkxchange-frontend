@@ -49,7 +49,7 @@ export default function Marketplace() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-cream">
+    <div className="min-h-screen bg-white">
       <div className="bg-brand-black text-brand-ivory py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
@@ -58,6 +58,28 @@ export default function Marketplace() {
           <p className="text-xl text-gray-300">
             Discover products from Black-owned businesses
           </p>
+        </div>
+      </div>
+
+      {/* Become a Vendor Banner */}
+      <div className="bg-emerald-gradient py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="text-brand-gold text-4xl">🏪</div>
+              <div>
+                <h2 className="text-2xl font-heading font-bold text-white mb-1">
+                  Become a Vendor on BlkXchange™
+                </h2>
+                <p className="text-gray-300">
+                  Showcase your products, gain exposure, and join the movement supporting Black entrepreneurship.
+                </p>
+              </div>
+            </div>
+            <Button className="bg-brand-gold text-brand-black hover:bg-opacity-90 px-8 py-4">
+              Learn More
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -90,7 +112,7 @@ export default function Marketplace() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {products.map((product) => (
-              <Card key={product.id} className="hover:shadow-lg transition-shadow border-2 hover:border-brand-gold">
+              <Card key={product.id} className="transition-all duration-300 border-2 hover:border-brand-gold hover:shadow-gold-glow-hover hover:-translate-y-1">
                 <CardContent className="p-0">
                   <div className="aspect-square bg-gray-200 relative overflow-hidden">
                     {product.image_url ? (
