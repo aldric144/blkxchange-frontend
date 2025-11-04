@@ -94,7 +94,7 @@ function UserProfile() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center">
+      <div className="min-h-screen bg-brand-cream flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-gold"></div>
       </div>
     );
@@ -102,7 +102,7 @@ function UserProfile() {
 
   if (error || !profile) {
     return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center">
+      <div className="min-h-screen bg-brand-cream flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-brand-black mb-4">User Not Found</h2>
           <p className="text-gray-600 mb-6">{error || 'The user you are looking for does not exist.'}</p>
@@ -118,7 +118,7 @@ function UserProfile() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-ivory">
+    <div className="min-h-screen bg-brand-cream">
       <div className="max-w-6xl mx-auto px-4 py-8">
         <button
           onClick={() => navigate(-1)}

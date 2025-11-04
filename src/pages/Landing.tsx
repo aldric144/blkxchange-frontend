@@ -111,7 +111,7 @@ export default function Landing() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-ivory">
+    <div className="min-h-screen bg-brand-cream">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-brand-black to-brand-charcoal text-brand-ivory py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -141,7 +141,7 @@ export default function Landing() {
                 </Button>
               </Link>
               <Link to="/professionals">
-                <Button variant="outline" className="border-brand-ivory text-brand-ivory hover:bg-brand-ivory hover:text-brand-black text-lg px-8 py-6">
+                <Button variant="outline" className="border-brand-ivory text-brand-ivory hover:bg-brand-cream hover:text-brand-black text-lg px-8 py-6">
                   <Users className="w-5 h-5 mr-2" />
                   Explore Professionals
                 </Button>
@@ -227,7 +227,7 @@ export default function Landing() {
       </section>
 
       {/* Shop by Category Section */}
-      <section className="py-16 bg-brand-ivory">
+      <section className="py-16 bg-brand-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-heading font-bold text-center mb-12 text-brand-black">
             Shop by Category
@@ -348,7 +348,7 @@ export default function Landing() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/vendor-apply">
-              <Button className="bg-brand-black text-brand-gold hover:bg-brand-charcoal text-lg px-8 py-6">
+              <Button className="bg-brand-green text-white hover:opacity-90 text-lg px-8 py-6">
                 Become a Vendor
               </Button>
             </Link>
@@ -362,7 +362,7 @@ export default function Landing() {
       </section>
 
       {/* Footer Note */}
-      <section className="py-8 bg-brand-ivory border-t border-gray-300">
+      <section className="py-8 bg-brand-cream border-t border-gray-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gray-600 text-sm">
             BlkXchange™ operates on a 15% community-centered revenue model: 85% goes directly to our vendors, 

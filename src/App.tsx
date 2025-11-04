@@ -23,6 +23,9 @@ import BlkPointsWallet from './pages/wallet/BlkPointsWallet';
 import InvestorImpact from './pages/investor/InvestorImpact';
 import WealthHub from './pages/wealth/WealthHub';
 import DAOGovernance from './pages/dao/DAOGovernance';
+import LegacyWall from './pages/blkxchange360/LegacyWall';
+import HistoryWindow from './pages/blkxchange360/HistoryWindow';
+import Footer from './components/Footer';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import ShareYourVoiceButton from './components/ShareYourVoiceButton';
 
@@ -45,23 +48,23 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="min-h-screen bg-brand-ivory font-body">
+        <div className="min-h-screen bg-brand-cream font-body">
           <PWAInstallPrompt />
           <ShareYourVoiceButton />
           <Routes>
-          <Route path="/" element={<><Navigation /><Landing /></>} />
-          <Route path="/marketplace" element={<><Navigation /><Marketplace /></>} />
-          <Route path="/professionals" element={<><Navigation /><Professionals /></>} />
-          <Route path="/impact" element={<><Navigation /><Impact /></>} />
-          <Route path="/about" element={<><Navigation /><About /></>} />
-          <Route path="/vendor/register" element={<><Navigation /><VendorRegister /></>} />
-          <Route path="/vendor-apply" element={<><Navigation /><VendorApply /></>} />
-          <Route path="/vendor-agreement" element={<><Navigation /><VendorAgreement /></>} />
-          <Route path="/vendor-dashboard" element={<><Navigation /><VendorDashboard /></>} />
-          <Route path="/news" element={<><Navigation /><News /></>} />
-          <Route path="/news/:slug" element={<><Navigation /><ArticleDetail /></>} />
-          <Route path="/community/events/:id" element={<><Navigation /><EventDetailPage /></>} />
-          <Route path="/users/:username" element={<><Navigation /><UserProfile /></>} />
+          <Route path="/" element={<><Navigation /><Landing /><Footer /></>} />
+          <Route path="/marketplace" element={<><Navigation /><Marketplace /><Footer /></>} />
+          <Route path="/professionals" element={<><Navigation /><Professionals /><Footer /></>} />
+          <Route path="/impact" element={<><Navigation /><Impact /><Footer /></>} />
+          <Route path="/about" element={<><Navigation /><About /><Footer /></>} />
+          <Route path="/vendor/register" element={<><Navigation /><VendorRegister /><Footer /></>} />
+          <Route path="/vendor-apply" element={<><Navigation /><VendorApply /><Footer /></>} />
+          <Route path="/vendor-agreement" element={<><Navigation /><VendorAgreement /><Footer /></>} />
+          <Route path="/vendor-dashboard" element={<><Navigation /><VendorDashboard /><Footer /></>} />
+          <Route path="/news" element={<><Navigation /><News /><Footer /></>} />
+          <Route path="/news/:slug" element={<><Navigation /><ArticleDetail /><Footer /></>} />
+          <Route path="/community/events/:id" element={<><Navigation /><EventDetailPage /><Footer /></>} />
+          <Route path="/users/:username" element={<><Navigation /><UserProfile /><Footer /></>} />
           
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -137,6 +140,8 @@ function App() {
               <Admin360CommunityHub />
             </Suspense>
           } />
+          <Route path="/blkxchange360/legacy-wall" element={<><Navigation /><LegacyWall /><Footer /></>} />
+          <Route path="/blkxchange360/history-window" element={<><Navigation /><HistoryWindow /><Footer /></>} />
           
           <Route path="/demo/investor" element={
             <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>

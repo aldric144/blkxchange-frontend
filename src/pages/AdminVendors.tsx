@@ -128,7 +128,7 @@ export default function AdminVendors() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center">
+      <div className="min-h-screen bg-brand-cream flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-gold mx-auto mb-4"></div>
           <p className="text-gray-600">Loading applications...</p>
@@ -138,7 +138,7 @@ export default function AdminVendors() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-ivory">
+    <div className="min-h-screen bg-brand-cream">
       <div className="bg-brand-black text-brand-ivory py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4">

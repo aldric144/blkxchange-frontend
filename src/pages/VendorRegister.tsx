@@ -51,7 +51,7 @@ export default function VendorRegister() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center p-4">
+      <div className="min-h-screen bg-brand-cream flex items-center justify-center p-4">
         <Card className="max-w-2xl w-full border-2 border-brand-gold">
           <CardContent className="p-8 text-center">
             <CheckCircle className="w-16 h-16 text-brand-gold mx-auto mb-4" />
@@ -74,7 +74,7 @@ export default function VendorRegister() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-ivory">
+    <div className="min-h-screen bg-brand-cream">
       <div className="bg-brand-black text-brand-ivory py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Store className="w-16 h-16 text-brand-gold mx-auto mb-4" />
@@ -191,7 +191,7 @@ export default function VendorRegister() {
                 />
               </div>
 
-              <Alert className="bg-brand-ivory border-brand-gold">
+              <Alert className="bg-brand-cream border-brand-gold">
                 <AlertDescription className="text-gray-700">
                   By submitting this application, you agree to our vendor terms and revenue sharing model 
                   (90% to you, 7% platform operations, 3% community impact).

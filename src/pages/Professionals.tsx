@@ -7,6 +7,7 @@ import { Star, Calendar, CheckCircle } from 'lucide-react';
 import { api } from '../api';
 import { Professional } from '../types';
 import { sampleProfessionals } from '../sampleData/professionals';
+import { getCategoryColor, getCategoryTextColor } from '../utils/categoryColors';
 
 const categories = [
   { label: 'All Categories', value: 'all' },
@@ -36,7 +37,7 @@ export default function Professionals() {
   }, [selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-brand-ivory">
+    <div className="min-h-screen bg-brand-cream">
       <div className="bg-brand-black text-brand-ivory py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
@@ -75,8 +76,11 @@ export default function Professionals() {
             <div className="text-xl text-gray-600">No professionals found in this category.</div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {professionals.map((professional) => (
+          <div className="flex gap-6">
+            {/* Main Content - Professionals Grid */}
+            <div className="flex-1">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {professionals.map((professional) => (
               <Card key={professional.id} className="hover:shadow-lg transition-shadow border-2 hover:border-brand-gold">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4 mb-4">
@@ -108,7 +112,13 @@ export default function Professionals() {
                     </div>
                   </div>
 
-                  <Badge className="mb-3 capitalize bg-brand-charcoal text-brand-gold">
+                  <Badge 
+                    className="mb-3 capitalize"
+                    style={{ 
+                      backgroundColor: getCategoryColor(professional.category),
+                      color: getCategoryTextColor(getCategoryColor(professional.category))
+                    }}
+                  >
                     {professional.category}
                   </Badge>
 
@@ -142,13 +152,61 @@ export default function Professionals() {
                   )}
                 </CardContent>
                 <CardFooter className="p-6 pt-0">
-                  <Button className="w-full bg-brand-gold text-brand-black hover:bg-opacity-90">
+                  <Button className="w-full bg-brand-green text-white hover:opacity-90">
                     <Calendar className="w-4 h-4 mr-2" />
                     Book Consultation
                   </Button>
                 </CardFooter>
               </Card>
-            ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Sticky Promo Card */}
+            <div className="hidden xl:block w-80 flex-shrink-0">
+              <div className="sticky top-20">
+                <Card className="overflow-hidden border-2 border-brand-gold">
+                  <div className="bg-gradient-to-br from-brand-black to-brand-charcoal p-6 text-brand-ivory">
+                    <div className="flex items-center space-x-2 mb-4">
+                      <div className="w-12 h-12 rounded-full bg-brand-gold flex items-center justify-center">
+                        <span className="text-2xl">🏢</span>
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg text-brand-gold">BlkXchange 360™</h3>
+                        <p className="text-xs text-gray-300">Premium Ecosystem</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-sm text-gray-300 mb-4">
+                      Access exclusive tools, resources, and opportunities designed to accelerate your business growth and financial success.
+                    </p>
+                    
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-start space-x-2">
+                        <span className="text-brand-gold">✓</span>
+                        <span className="text-sm">Wealth Building Resources</span>
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <span className="text-brand-gold">✓</span>
+                        <span className="text-sm">Community Networking</span>
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <span className="text-brand-gold">✓</span>
+                        <span className="text-sm">Legacy Preservation</span>
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <span className="text-brand-gold">✓</span>
+                        <span className="text-sm">Historical Archives</span>
+                      </div>
+                    </div>
+                    
+                    <Button className="w-full bg-brand-gold text-brand-black hover:opacity-90 font-semibold">
+                      Explore BlkXchange 360™
+                    </Button>
+                  </div>
+                </Card>
+              </div>
+            </div>
           </div>
         )}
       </div>

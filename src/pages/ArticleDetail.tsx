@@ -68,7 +68,7 @@ function ArticleDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center">
+      <div className="min-h-screen bg-brand-cream flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-gold mx-auto"></div>
           <p className="mt-4 text-brand-black">Loading article...</p>
@@ -79,7 +79,7 @@ function ArticleDetail() {
 
   if (error || !article) {
     return (
-      <div className="min-h-screen bg-brand-ivory flex items-center justify-center">
+      <div className="min-h-screen bg-brand-cream flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-brand-black mb-4">Article Not Found</h2>
           <p className="text-gray-600 mb-6">{error || 'The article you are looking for does not exist.'}</p>
@@ -95,7 +95,7 @@ function ArticleDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-ivory">
+    <div className="min-h-screen bg-brand-cream">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <button
           onClick={() => navigate(-1)}
