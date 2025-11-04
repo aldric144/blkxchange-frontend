@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, ShoppingBag, Users, Heart, TrendingUp, User as UserIcon } from 'lucide-react';
+import { ArrowRight, ShoppingBag, Users, Heart, TrendingUp, User as UserIcon, Newspaper } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { api } from '../api';
 import { ImpactStats } from '../types';
@@ -182,19 +182,22 @@ export default function Landing() {
       </section>
 
       {/* From The Black Chronicle - News Section */}
-      <section className="py-16 bg-emerald-gradient">
+      <section className="py-12 md:py-16" style={{ background: 'linear-gradient(180deg, #004B2E 0%, #000000 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-4xl font-heading font-bold text-brand-gold mb-2">
-                From The Black Chronicle
-              </h2>
-              <p className="text-lg text-brand-light">
+          <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
+                <Newspaper className="w-6 h-6 md:w-7 md:h-7 text-brand-gold" />
+                <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-gold">
+                  From The Black Chronicle
+                </h2>
+              </div>
+              <p className="text-base md:text-lg text-white">
                 Latest in Black Excellence, Innovation, and Achievement
               </p>
             </div>
             <Link to="/news">
-              <Button className="bg-brand-gold text-brand-black hover:bg-opacity-90">
+              <Button className="bg-brand-gold text-brand-black hover:bg-[#B9962E] rounded-md transition-colors">
                 View All Stories
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -206,20 +209,20 @@ export default function Landing() {
                 <div
                   key={article.id}
                   onClick={() => handleArticleClick(article)}
-                  className="bg-brand-charcoal rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer border border-brand-gold"
+                  className="bg-black rounded-lg overflow-hidden hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all cursor-pointer border border-brand-gold p-3"
                 >
                   {article.image_url && (
                     <img
                       src={article.image_url}
                       alt={article.title}
-                      className="w-full h-48 object-cover"
+                      className="w-full aspect-video object-cover rounded-md mb-3"
                     />
                   )}
-                  <div className="p-4">
-                    <h3 className="text-lg font-bold text-brand-light mb-2 line-clamp-2">
+                  <div>
+                    <h3 className="text-base font-bold text-white mb-2 line-clamp-2">
                       {article.title}
                     </h3>
-                    <p className="text-gray-300 text-sm mb-3 line-clamp-3">
+                    <p className="text-gray-400 text-sm mb-3 line-clamp-3">
                       {truncateText(article.body, 100)}
                     </p>
                     <div className="flex items-center text-brand-gold text-xs">
