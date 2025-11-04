@@ -161,16 +161,16 @@ export default function Landing() {
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
                 className="absolute top-0 left-0 w-full h-full rounded-lg border-4 border-brand-gold"
-                src="https://www.youtube.com/embed/F0CccmM-lDQ"
+                src="https://www.youtube.com/embed/AMZ9kvXPGb8?autoplay=0"
                 title="The Untold Story of Black Wall Street and Beyond"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             </div>
+            <p className="text-center text-lg text-gray-300 mt-4">
+              The Untold Story of Black Wall Street and Beyond
+            </p>
           </div>
-          <p className="text-center text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
-            Honoring the resilience and entrepreneurial spirit of Black Wall Street, we continue the legacy of economic empowerment and community building.
-          </p>
         </div>
       </section>
 
