@@ -7,9 +7,9 @@
  * fallback to production URL for reliability.
  * 
  * The environment variable should be the base URL WITHOUT /api path:
- * VITE_API_BASE_URL=https://blkxchange-backend-1.onrender.com
+ * VITE_API_BASE_URL=https://blkxchange-backend.onrender.com
  * 
  * API calls should append /api/endpoint to this base URL.
  */
 
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://blkxchange-backend-1.onrender.com";
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://blkxchange-backend.onrender.com";
