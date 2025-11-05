@@ -101,10 +101,10 @@ export default function Navigation() {
               </button>
 
               {is360DropdownOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-brand-surface rounded-md shadow-gold-glow py-1 z-50 border border-brand-gold">
+                <div className="absolute left-0 mt-2 w-48 bg-brand-emerald rounded-md shadow-emerald-glow py-1 z-50 border border-brand-emerald">
                   <Link
                     to="/wealth-hub"
-                    className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-white hover:bg-brand-black hover:text-brand-gold transition-colors"
                     onClick={() => setIs360DropdownOpen(false)}
                   >
                     <BookOpen className="w-4 h-4" />
@@ -113,7 +113,7 @@ export default function Navigation() {
                   
                   <Link
                     to="/blkxchange360/community-hub"
-                    className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-white hover:bg-brand-black hover:text-brand-gold transition-colors"
                     onClick={() => setIs360DropdownOpen(false)}
                   >
                     <MessageCircle className="w-4 h-4" />
@@ -122,7 +122,7 @@ export default function Navigation() {
                   
                   <Link
                     to="/blkxchange360/legacy-wall"
-                    className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-white hover:bg-brand-black hover:text-brand-gold transition-colors"
                     onClick={() => setIs360DropdownOpen(false)}
                   >
                     <Heart className="w-4 h-4" />
@@ -131,7 +131,7 @@ export default function Navigation() {
                   
                   <Link
                     to="/blkxchange360/history-window"
-                    className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-white hover:bg-brand-black hover:text-brand-gold transition-colors"
                     onClick={() => setIs360DropdownOpen(false)}
                   >
                     <BookOpen className="w-4 h-4" />
@@ -140,7 +140,7 @@ export default function Navigation() {
                   
                   <Link
                     to="/blkxchange360/groups"
-                    className="flex items-center space-x-2 px-4 py-2 text-sm text-brand-light hover:bg-brand-black hover:text-brand-gold transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-white hover:bg-brand-black hover:text-brand-gold transition-colors"
                     onClick={() => setIs360DropdownOpen(false)}
                   >
                     <Users className="w-4 h-4" />
@@ -152,7 +152,7 @@ export default function Navigation() {
             
             <Link 
               to="/vendor-apply" 
-              className="gold-underline-hover hover:text-brand-gold transition-colors font-medium"
+              className="px-4 py-2 bg-brand-gold text-brand-black font-semibold rounded hover:shadow-gold-glow-hover transition-all"
             >
               Become a Vendor
             </Link>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, ShoppingBag, Users, Heart, TrendingUp, User as UserIcon } from 'lucide-react';
+import { ArrowRight, ShoppingBag, Users, Heart, TrendingUp, User as UserIcon, Newspaper } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { api } from '../api';
 import { ImpactStats } from '../types';
@@ -23,7 +23,7 @@ const sampleArticles: Article[] = [
     category: "History",
     body: "The Greenwood District of Tulsa, Oklahoma, known as Black Wall Street, was one of the most prosperous African American communities in the early 20th century. Despite the tragic events of 1921, its legacy continues to inspire economic empowerment and entrepreneurship in Black communities today.",
     author: "The Black Chronicle",
-    image_url: null,
+    image_url: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=450&fit=crop",
     created_at: new Date().toISOString()
   },
   {
@@ -32,7 +32,7 @@ const sampleArticles: Article[] = [
     category: "Business",
     body: "When you support Black-owned businesses, you're not just making a purchase—you're investing in community wealth, creating jobs, and building generational prosperity. Learn how your dollars can make a lasting impact.",
     author: "The Black Chronicle",
-    image_url: null,
+    image_url: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800&h=450&fit=crop",
     created_at: new Date().toISOString()
   },
   {
@@ -41,7 +41,7 @@ const sampleArticles: Article[] = [
     category: "Technology",
     body: "From e-commerce to tech startups, Black entrepreneurs are leveraging digital platforms to build thriving businesses. Discover the innovators reshaping the economic landscape and creating opportunities for future generations.",
     author: "The Black Chronicle",
-    image_url: null,
+    image_url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=450&fit=crop",
     created_at: new Date().toISOString()
   },
   {
@@ -50,7 +50,7 @@ const sampleArticles: Article[] = [
     category: "Finance",
     body: "Economic empowerment starts with community investment. Learn how collective action, supporting local businesses, and reinvesting in our communities creates sustainable wealth and opportunities for all.",
     author: "The Black Chronicle",
-    image_url: null,
+    image_url: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=450&fit=crop",
     created_at: new Date().toISOString()
   }
 ];
@@ -129,19 +129,19 @@ export default function Landing() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/marketplace">
-                <Button className="bg-brand-gold text-brand-black hover:bg-opacity-90 text-lg px-8 py-6">
+                <Button className="bg-brand-gold text-brand-black hover:bg-opacity-90 gold-underline-hover text-lg px-8 py-6 font-bold">
                   <ShoppingBag className="w-5 h-5 mr-2" />
                   Shop Marketplace
                 </Button>
               </Link>
               <Link to="/vendor-apply">
-                <Button variant="outline" className="border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black text-lg px-8 py-6">
+                <Button className="bg-white text-brand-gold hover:bg-opacity-90 gold-underline-hover text-lg px-8 py-6 font-bold">
                   <TrendingUp className="w-5 h-5 mr-2" />
                   Sell on BlkXchange
                 </Button>
               </Link>
               <Link to="/professionals">
-                <Button variant="outline" className="border-brand-ivory text-brand-ivory hover:bg-brand-cream hover:text-brand-black text-lg px-8 py-6">
+                <Button className="bg-white text-brand-gold hover:bg-opacity-90 gold-underline-hover text-lg px-8 py-6 font-bold">
                   <Users className="w-5 h-5 mr-2" />
                   Explore Professionals
                 </Button>
@@ -152,42 +152,52 @@ export default function Landing() {
       </section>
 
       {/* Legacy of Black Wall Street - YouTube Video Section */}
-      <section className="py-16 bg-brand-charcoal text-brand-ivory">
+      <section className="py-16 bg-brand-black text-brand-ivory">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-heading font-bold text-center mb-4 text-brand-gold section-divider-gold">
+          <h2 className="text-4xl font-heading font-bold text-center mb-8 text-brand-gold">
             Legacy of Black Wall Street
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
                 className="absolute top-0 left-0 w-full h-full rounded-lg border-4 border-brand-gold"
-                src="https://www.youtube.com/embed/F0CccmM-lDQ"
+                src="https://www.youtube.com/embed/AMZ9kvXPGb8?autoplay=1&mute=1&loop=0&controls=1&modestbranding=1"
                 title="The Untold Story of Black Wall Street and Beyond"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             </div>
+            <p className="text-center text-lg text-gray-300 mt-4">
+              The Untold Story of Black Wall Street and Beyond
+            </p>
           </div>
-          <p className="text-center text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
-            Honoring the resilience and entrepreneurial spirit of Black Wall Street, we continue the legacy of economic empowerment and community building.
-          </p>
+          
+          {/* Legacy Caption */}
+          <div className="max-w-[900px] mx-auto mt-6 mb-8 px-4">
+            <p className="text-center text-brand-gold font-heading font-medium text-lg md:text-xl">
+              Honoring the resilience and entrepreneurial spirit of Black Wall Street, we continue the legacy of economic empowerment and community building.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* From The Black Chronicle - News Section */}
-      <section className="py-16 bg-emerald-gradient">
+      <section className="py-12 md:py-16" style={{ background: 'linear-gradient(180deg, #004B2E 0%, #000000 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-4xl font-heading font-bold text-brand-gold mb-2">
-                From The Black Chronicle
-              </h2>
-              <p className="text-lg text-brand-light">
+          <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
+                <Newspaper className="w-6 h-6 md:w-7 md:h-7 text-brand-gold" />
+                <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-gold">
+                  From The Black Chronicle
+                </h2>
+              </div>
+              <p className="text-base md:text-lg text-white">
                 Latest in Black Excellence, Innovation, and Achievement
               </p>
             </div>
             <Link to="/news">
-              <Button className="bg-brand-gold text-brand-black hover:bg-opacity-90">
+              <Button className="bg-brand-gold text-brand-black hover:bg-[#B9962E] rounded-md transition-colors">
                 View All Stories
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -199,23 +209,24 @@ export default function Landing() {
                 <div
                   key={article.id}
                   onClick={() => handleArticleClick(article)}
-                  className="bg-brand-charcoal rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer border border-brand-gold"
+                  className="flex flex-col h-full bg-black rounded-lg overflow-hidden hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all cursor-pointer border border-brand-gold"
                 >
-                  {article.image_url && (
-                    <img
-                      src={article.image_url}
-                      alt={article.title}
-                      className="w-full h-48 object-cover"
-                    />
-                  )}
-                  <div className="p-4">
-                    <h3 className="text-lg font-bold text-brand-light mb-2 line-clamp-2">
+                  <img
+                    src={article.image_url || "https://images.unsplash.com/photo-1585241645927-c7a8e5840c42?w=800&h=450&fit=crop"}
+                    alt={article.title}
+                    className="w-full aspect-video object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1585241645927-c7a8e5840c42?w=800&h=450&fit=crop";
+                    }}
+                  />
+                  <div className="p-3 flex flex-col flex-grow">
+                    <h3 className="text-base font-bold text-white mb-2 line-clamp-2">
                       {article.title}
                     </h3>
-                    <p className="text-gray-300 text-sm mb-3 line-clamp-3">
+                    <p className="text-[#CCCCCC] text-sm mb-3 line-clamp-3 flex-grow">
                       {truncateText(article.body, 100)}
                     </p>
-                    <div className="flex items-center text-brand-gold text-xs">
+                    <div className="flex items-center text-brand-gold text-xs mt-auto">
                       <UserIcon className="w-3 h-3 mr-1" />
                       <span>{article.author}</span>
                     </div>
