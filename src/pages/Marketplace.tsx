@@ -3,9 +3,10 @@ import { useSearchParams } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Star, ShoppingCart } from 'lucide-react';
+import { Star, ShoppingCart, Plus } from 'lucide-react';
 import { api } from '../api';
-import { Product } from '../types';
+import { Product, Vendor } from '../types';
+import VendorUploadForm from '../components/VendorUploadForm';
 
 const categories = [
   { label: 'All Categories', value: 'all' },
@@ -20,18 +21,72 @@ const categories = [
   { label: 'Jewelry', value: 'jewelry' }
 ];
 
+const productsCache: { [key: string]: { data: Product[]; timestamp: number } } = {};
+const vendorsCache: { [key: string]: Vendor } = {};
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
 export default function Marketplace() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
+  const [vendors, setVendors] = useState<{ [key: string]: Vendor }>({});
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'all');
+  const [showUploadForm, setShowUploadForm] = useState(false);
+  const [demoVendorId] = useState('936ba0c2-92cf-4d06-a72d-d782c2a14ec7'); // Demo vendor ID
 
   useEffect(() => {
-    setLoading(true);
-    const category = selectedCategory === 'all' ? undefined : selectedCategory;
-    api.getProducts(category)
-      .then(setProducts)
-      .finally(() => setLoading(false));
+    const fetchProducts = async () => {
+      setLoading(true);
+      const category = selectedCategory === 'all' ? undefined : selectedCategory;
+      const cacheKey = category || 'all';
+      
+      const cached = productsCache[cacheKey];
+      if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+        setProducts(cached.data);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const data = await api.getProducts(category);
+        setProducts(data);
+        
+        productsCache[cacheKey] = {
+          data,
+          timestamp: Date.now()
+        };
+
+        const uniqueVendorIds = [...new Set(data.map(p => p.vendor_id))];
+        const vendorPromises = uniqueVendorIds.map(async (vendorId) => {
+          if (vendorsCache[vendorId]) {
+            return vendorsCache[vendorId];
+          }
+          try {
+            const vendor = await api.getVendor(vendorId);
+            vendorsCache[vendorId] = vendor;
+            return vendor;
+          } catch (err) {
+            console.error(`Failed to fetch vendor ${vendorId}:`, err);
+            return null;
+          }
+        });
+
+        const vendorData = await Promise.all(vendorPromises);
+        const vendorMap: { [key: string]: Vendor } = {};
+        vendorData.forEach(vendor => {
+          if (vendor) {
+            vendorMap[vendor.id] = vendor;
+          }
+        });
+        setVendors(vendorMap);
+      } catch (err) {
+        console.error('Failed to fetch products:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
   }, [selectedCategory]);
 
   const handleCategoryChange = (value: string) => {
@@ -47,14 +102,41 @@ export default function Marketplace() {
     <div className="min-h-screen bg-brand-ivory">
       <div className="bg-brand-black text-brand-ivory py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Marketplace
-          </h1>
-          <p className="text-xl text-gray-300">
-            Discover products from Black-owned businesses
-          </p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+                Marketplace
+              </h1>
+              <p className="text-xl text-gray-300">
+                Discover products from Black-owned businesses
+              </p>
+            </div>
+            <Button
+              onClick={() => setShowUploadForm(!showUploadForm)}
+              className="bg-brand-emerald text-white hover:bg-opacity-90"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              {showUploadForm ? 'Hide Form' : 'Add Product'}
+            </Button>
+          </div>
         </div>
       </div>
+
+      {showUploadForm && (
+        <div className="bg-gray-50 py-8 border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <VendorUploadForm
+              vendorId={demoVendorId}
+              onSuccess={() => {
+                setShowUploadForm(false);
+                const category = selectedCategory === 'all' ? undefined : selectedCategory;
+                api.getProducts(category).then(setProducts);
+              }}
+              onCancel={() => setShowUploadForm(false)}
+            />
+          </div>
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
@@ -108,6 +190,11 @@ export default function Marketplace() {
                     <h3 className="font-semibold text-lg mb-2 text-brand-black line-clamp-2">
                       {product.name}
                     </h3>
+                    {vendors[product.vendor_id] && (
+                      <p className="text-sm text-brand-emerald font-medium mb-2">
+                        by {vendors[product.vendor_id].business_name}
+                      </p>
+                    )}
                     <p className="text-gray-600 text-sm mb-3 line-clamp-2">
                       {product.description}
                     </p>
