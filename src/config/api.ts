@@ -4,8 +4,7 @@
  * This file contains the hardcoded backend API URL to ensure consistent
  * connectivity across all environments without relying on environment variables.
  * 
- * Phase 19.3: Fixed frontend deployment by removing dependency on Vercel
- * environment variables and hardcoding the production API URL.
+ * Phase 18A: Updated to use Render backend for production deployment.
  */
 
-export const API_BASE_URL = "https://blkxchangemarketplace-kytxrr7p.devinapps.com";
+export const API_BASE_URL = "https://blkxchange-backend.onrender.com";
