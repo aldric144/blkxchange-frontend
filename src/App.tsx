@@ -24,7 +24,6 @@ import InvestorImpact from './pages/investor/InvestorImpact';
 import WealthHub from './pages/wealth/WealthHub';
 import DAOGovernance from './pages/dao/DAOGovernance';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
-import ShareYourVoiceButton from './components/ShareYourVoiceButton';
 
 const Admin360Dashboard = lazy(() => import('./pages/admin360/Dashboard'));
 const Admin360Vendors = lazy(() => import('./pages/admin360/Vendors'));
@@ -47,7 +46,6 @@ function App() {
       <AuthProvider>
         <div className="min-h-screen bg-brand-ivory font-body">
           <PWAInstallPrompt />
-          <ShareYourVoiceButton />
           <Routes>
           <Route path="/" element={<><Navigation /><Landing /></>} />
           <Route path="/marketplace" element={<><Navigation /><Marketplace /></>} />
